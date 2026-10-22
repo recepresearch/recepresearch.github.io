@@ -5,6 +5,8 @@
 
 ## ✅ YAYIN DURUMU: AÇIK (2026-09-25 yeniden açıldı)
 
+- **2026-10-22 TAŞINMA (tamam):** depo `ContinentOfGrinch/recep` → `ilhanselahattin/recepresearch.github.io` → **`recepresearch/recepresearch.github.io`** (organizasyon, repo id 1383432016, kullanıcı admin). Canlı: **https://recepresearch.github.io/** (kök yol, `/recep/` yok). `site-url`, hero.lua `SITE`, README, `git remote` güncellendi. Eski adresler yönlendirilmez (404).
+
 - 2026-09-25: kullanıcı isteğiyle kapatıldı (Pages silindi + publish iş akışı devre dışı), aynı gün tipografi v3 sonrası yeniden açıldı.
 - **Kapatma:** `PUT .../actions/workflows/365129935/disable` + `DELETE .../pages` (CDN önbelleği ~10 dk içinde düşer).
 - **Açma:** `PUT .../actions/workflows/365129935/enable` → `POST .../pages` `{"build_type":"workflow"}` → `POST .../actions/workflows/365129935/dispatches` `{"ref":"main"}` → Actions yeşil + canlı 200 kontrolü.
@@ -21,7 +23,7 @@
 - **Yöntem (DİKKAT):** hibrit **Girdi-Çıktı (Leontief)** modeli + AB ithalat talep esneklikleri **2SLS** + mikro veri uydu hesapları. **Sistem GMM DEĞİL** (ilk oturumdaki varsayım yanlıştı, düzeltildi).
 - **Kaynak belgeler (yerel, siteye konmaz):** `../1001_basvuru_formu_325K372R (1).pdf` (içerik kaynağı; bütçe/kişisel bilgi alınmadı), `../RECEP_Altyapi_ve_Web_Sitesi_Teklifi.docx`, `../skdm_toplantı.docx`, marka paketi `../Marka/logo_örnekleri/brand/` (svg, png, icons, src/globe.json).
 - **Bütçe:** 0 TL. Açık kaynak + GitHub Pages + Actions.
-- **GitHub:** https://github.com/ContinentOfGrinch/recep (public, `main`) → canlı: https://continentofgrinch.github.io/recep/ . Pages kaynağı = GitHub Actions. İleride Tunç Durmaz / lab organizasyonuna devredilecek (README'de adımlar).
+- **GitHub:** https://github.com/recepresearch/recepresearch.github.io (public, `main`, organizasyon) → canlı: https://recepresearch.github.io/ . Pages kaynağı = GitHub Actions. İleride Tunç Durmaz / lab organizasyonuna devredilecek (README'de adımlar).
 - **Araçlar:** Quarto 1.10.18 (yerel = CI), R 4.5.1, Node 24. `gh` CLI yok → GitHub API için `git credential fill` token'ı + curl (Türkçe JSON → `--data-binary @dosya.json`).
 
 ## 2b. TASARIM v5 — küre ana sayfa + 1-bit "art canvas" hero (2026-09-26, GÜNCEL; 2a'daki filigran/görsel/ana sayfa maddelerinin YERİNE geçer)

@@ -85,7 +85,7 @@ local CEVIRI = {
 local TERS = {}
 for tr, en in pairs(CEVIRI) do TERS[en] = tr end
 
-local SITE = "https://continentofgrinch.github.io/recep/"
+local SITE = "https://recepresearch.github.io/"
 
 local function kacis(s)
   return (s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
