@@ -18,7 +18,7 @@ lang: en
 
 website:
   description: "RECEP — Environment, Clean Energy and Economic Policies Research Group, Yıldız Technical University."
-  site-url: "https://recepresearch.github.io/en/"
+  site-url: "https://recepresearch.org/en/"
 
   navbar:
     logo-alt: "recep emblem: globe and EU–Türkiye link"

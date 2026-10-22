@@ -4,7 +4,7 @@
 
 **recep — Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu** web sitesi.
 
-Site [Quarto](https://quarto.org) ile üretilir ve GitHub Actions ile GitHub Pages'e yayımlanır: <https://recepresearch.github.io/>
+Site [Quarto](https://quarto.org) ile üretilir ve GitHub Actions ile GitHub Pages'e yayımlanır: <https://recepresearch.org/>
 
 ## hızlı başlangıç
 

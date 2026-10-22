@@ -17,7 +17,7 @@ lang: tr
 
 website:
   description: "RECEP — Yıldız Teknik Üniversitesi Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu."
-  site-url: "https://recepresearch.github.io/"
+  site-url: "https://recepresearch.org/"
 
   navbar:
     left:                                  # merkez logonun solu
