@@ -5,7 +5,7 @@
 
 ## ✅ YAYIN DURUMU: AÇIK (2026-09-25 yeniden açıldı)
 
-- **YTÜ ağı recepresearch.org adresini ENGELLİYOR** (403 "Yıldız Teknik Üniversitesi · Erişim Engellendi", HTTPS bağlantısı kesiliyor). Canlılığı yerelden değil check-host.net ile dışarıdan doğrula. Sertifika 2026-10-23 onaylandı, HTTPS zorunlu.
+- **YTÜ ağı recepresearch.org adresini ENGELLİYOR** (403 "Yıldız Teknik Üniversitesi · Erişim Engellendi", HTTPS bağlantısı kesiliyor). Canlılığı yerelden değil check-host.net ile dışarıdan doğrula. Sertifika 2026-10-23 onaylandı, HTTPS zorunlu. Alan adı organizasyonda DOĞRULANDI (TXT `_github-pages-challenge-recepresearch` = de105fcf…; Cloudflare’den SİLME).
 - **2026-10-23 ALAN ADI:** recepresearch.org (Cloudflare, ücretsiz plan, NS lilyana/sullivan). DNS: 4×A @ → 185.199.108-111.153, CNAME www → recepresearch.github.io, hepsi DNS only (gri bulut — turuncu yapma, sertifika bozulur). Pages cname API ile ayarlandı; Actions yayınında CNAME dosyası gerekmez. site-url/hero.lua/README → https://recepresearch.org/ .
 - **2026-10-22 TAŞINMA (tamam):** depo `ContinentOfGrinch/recep` → `ilhanselahattin/recepresearch.github.io` → **`recepresearch/recepresearch.github.io`** (organizasyon, repo id 1383432016, kullanıcı admin). Canlı: **https://recepresearch.github.io/** (kök yol, `/recep/` yok). `site-url`, hero.lua `SITE`, README, `git remote` güncellendi. Eski adresler yönlendirilmez (404).
 
