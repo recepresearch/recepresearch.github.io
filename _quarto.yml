@@ -6,6 +6,7 @@ project:
     - "/assets/marka/"
     - "/assets/sanat/"
     - "/assets/js/kure.js"
+    - "/admin/"             # içerik paneli (Sveltia CMS) — derlenmez, olduğu gibi kopyalanır
 
 # Çift dil: Quarto proje profilleri. Varsayılan tr.
 #   quarto render                 → _quarto-tr.yml  (Türkçe, _site/)

@@ -1,0 +1,137 @@
+# recep içerik paneli (Sveltia CMS) — https://recepresearch.org/admin/
+# Belgeler: https://sveltiacms.app/en/docs
+#
+# Giriş: GitHub hesabı. Yalnızca recepresearch/recepresearch.github.io deposuna yazma yetkisi olanlar
+# içerik girebilir (organizasyon üyeleri). Panelde kaydedilen her değişiklik main dalına commit olur,
+# publish iş akışı siteyi yeniden derler.
+
+backend:
+  name: github
+  repo: recepresearch/recepresearch.github.io
+  branch: main
+  # "GitHub ile giriş" düğmesi için OAuth aracısı (Cloudflare Worker, sveltia-cms-auth).
+  # Kurulana kadar giriş, kişisel erişim anahtarı (token) ile yapılır.
+  # base_url: https://recep-cms-auth.<hesap>.workers.dev
+  commit_messages:
+    create: "içerik: {{collection}} / {{slug}} eklendi"
+    update: "içerik: {{collection}} / {{slug}} güncellendi"
+    delete: "içerik: {{collection}} / {{slug}} silindi"
+    uploadMedia: "içerik: {{path}} yüklendi"
+    deleteMedia: "içerik: {{path}} silindi"
+
+app_title: recep içerik paneli
+site_url: https://recepresearch.org
+display_url: https://recepresearch.org
+logo_url: https://recepresearch.org/assets/favicon.svg
+
+# Genel görseller (koleksiyonlar kendi klasörlerini kullanır)
+media_folder: assets/yuklemeler
+public_folder: /assets/yuklemeler
+
+# Türkçe karakterler adreste sadeleşir: "Çalıştay Duyurusu" → "calistay-duyurusu"
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  # ---------------------------------------------------------------- Türkçe
+  - name: kayitlar
+    label: konferans, çalıştay ve duyurular
+    label_singular: kayıt
+    description: >-
+      Kayıtlar /konferans-calistay/ sayfasında "tür" alanına göre konferanslar, çalıştaylar
+      veya duyurular listesinde görünür. "Taslak" açıkken sitede yayımlanmaz.
+    icon: event
+    folder: konferans-calistay/posts
+    path: "{{slug}}/index"
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    extension: qmd
+    format: yaml-frontmatter
+    media_folder: ""
+    public_folder: ""
+    create: true
+    delete: true
+    summary: "{{title}} · {{date | date('DD.MM.YYYY')}}"
+    sortable_fields: [date, title]
+    view_groups:
+      - { label: tür, field: tur }
+    preview_path: "konferans-calistay/posts/{{dirname}}/"
+    fields: &alanlar
+      - label: başlık
+        name: title
+        widget: string
+        hint: "Sitede küçük harfle gösterilir."
+      - label: tür
+        name: tur
+        widget: select
+        options:
+          - { label: konferans, value: konferans }
+          - { label: çalıştay, value: calistay }
+          - { label: duyuru, value: duyuru }
+      - label: yayın tarihi
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        hint: "Listeler bu tarihe göre yeniden eskiye sıralanır."
+      - label: kısa özet
+        name: description
+        widget: text
+        hint: "Bir iki cümle. Liste kartında ve sayfanın başında görünür."
+      - label: etkinlik tarihi
+        name: etkinlik-tarihi
+        widget: string
+        required: false
+        hint: "Serbest metin, ör. 12–13 kasım 2026. Duyurularda boş bırakılabilir."
+      - label: yer
+        name: yer
+        widget: string
+        required: false
+        hint: "ör. YTÜ Davutpaşa Kampüsü, İstanbul · çevrim içi"
+      - label: bağlantı
+        name: baglanti
+        widget: string
+        required: false
+        hint: "Kayıt, başvuru veya etkinlik sayfasının tam adresi (https://…)."
+        pattern: ["^https?://", "Adres http:// veya https:// ile başlamalı."]
+      - label: kapak görseli
+        name: image
+        widget: image
+        required: false
+        hint: "İsteğe bağlı. Liste kartında görünür; yatay görsel önerilir (ör. 1200×630)."
+      - label: taslak
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+        hint: "Açıkken kayıt sitede görünmez."
+      - label: metin
+        name: body
+        widget: markdown
+        required: false
+
+  # ---------------------------------------------------------------- English
+  - name: entries
+    label: conferences, workshops & announcements (english)
+    label_singular: entry
+    description: >-
+      İngilizce sayfa (/en/conferences-workshops/) için. İsteğe bağlı: Türkçe kaydın İngilizcesi
+      gerekiyorsa buraya ayrıca girilir.
+    icon: language
+    folder: conferences-workshops/posts
+    path: "{{slug}}/index"
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    extension: qmd
+    format: yaml-frontmatter
+    media_folder: ""
+    public_folder: ""
+    create: true
+    delete: true
+    summary: "{{title}} · {{date | date('DD.MM.YYYY')}}"
+    sortable_fields: [date, title]
+    view_groups:
+      - { label: tür, field: tur }
+    preview_path: "en/conferences-workshops/posts/{{dirname}}/"
+    fields: *alanlar

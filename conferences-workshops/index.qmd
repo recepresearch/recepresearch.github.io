@@ -4,30 +4,46 @@ description: "Conferences, workshops and announcements."
 toc: false
 aliases:
   - /news/index.html
+# Entries live in posts/ and are added from the content panel (/admin/).
+# Each entry lands in a list according to its `tur` field (konferans | calistay | duyuru).
+listing:
+  - id: list-conference
+    contents: posts
+    include: { tur: konferans }
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, date, title, description]
+  - id: list-workshop
+    contents: posts
+    include: { tur: calistay }
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, date, title, description]
+  - id: list-announcement
+    contents: posts
+    include: { tur: duyuru }
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, date, title, description]
+date-format: "D MMMM YYYY"
+language:
+  listing-page-no-matches: "no entries yet."
 ---
 
-:::: {.recep-grid}
+## conferences {#conferences .unnumbered .recep-liste-baslik}
 
-::: {.recep-card}
-[01]{.recep-index}
-
-### conferences {.unnumbered .unlisted .no-anchor}
+::: {#list-conference}
 :::
 
-::: {.recep-card}
-[02]{.recep-index}
+## workshops {#workshops .unnumbered .recep-liste-baslik}
 
-### workshops {.unnumbered .unlisted .no-anchor}
+::: {#list-workshop}
 :::
 
-::: {.recep-card}
-[03]{.recep-index}
+## announcements {#announcements .unnumbered .recep-liste-baslik}
 
-### announcements {.unnumbered .unlisted .no-anchor}
-:::
-
-::::
-
-::: {.recep-bekliyor}
-content in preparation.
+::: {#list-announcement}
 :::

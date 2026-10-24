@@ -1,0 +1,6 @@
+# defaults for entries — tur: konferans | calistay | duyuru (entered from /admin/)
+author: "recep"
+freeze: true
+title-block-banner: false
+toc: true
+date-format: "D MMMM YYYY"

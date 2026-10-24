@@ -4,30 +4,46 @@ description: "Konferanslar, çalıştaylar ve duyurular."
 toc: false
 aliases:
   - /haberler/index.html
+# Kayıtlar posts/ altındadır ve içerik panelinden (/admin/) girilir.
+# Her kayıt `tur` alanına göre (konferans | calistay | duyuru) ilgili listeye düşer.
+listing:
+  - id: liste-konferans
+    contents: posts
+    include: { tur: konferans }
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, date, title, description]
+  - id: liste-calistay
+    contents: posts
+    include: { tur: calistay }
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, date, title, description]
+  - id: liste-duyuru
+    contents: posts
+    include: { tur: duyuru }
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, date, title, description]
+date-format: "D MMMM YYYY"
+language:
+  listing-page-no-matches: "henüz kayıt yok."
 ---
 
-:::: {.recep-grid}
+## konferanslar {#konferanslar .unnumbered .recep-liste-baslik}
 
-::: {.recep-card}
-[01]{.recep-index}
-
-### konferanslar {.unnumbered .unlisted .no-anchor}
+::: {#liste-konferans}
 :::
 
-::: {.recep-card}
-[02]{.recep-index}
+## çalıştaylar {#calistaylar .unnumbered .recep-liste-baslik}
 
-### çalıştaylar {.unnumbered .unlisted .no-anchor}
+::: {#liste-calistay}
 :::
 
-::: {.recep-card}
-[03]{.recep-index}
+## duyurular {#duyurular .unnumbered .recep-liste-baslik}
 
-### duyurular {.unnumbered .unlisted .no-anchor}
-:::
-
-::::
-
-::: {.recep-bekliyor}
-içerik hazırlanıyor.
+::: {#liste-duyuru}
 :::

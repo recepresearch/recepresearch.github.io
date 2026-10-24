@@ -1,4 +1,4 @@
-# haberler için varsayılanlar — kategoriler: duyuru | etkinlik | çalıştay
+# kayıt varsayılanları — tur: konferans | calistay | duyuru (içerik panelinden, /admin/)
 author: "recep"
 freeze: true
 title-block-banner: false

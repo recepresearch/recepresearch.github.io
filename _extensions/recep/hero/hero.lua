@@ -159,13 +159,54 @@ local function ceviriBaglantisi(dil, parcalar, derinlik)
     hedef, SITE, trYol, SITE, enYol))
 end
 
+-- konferans / çalıştay / duyuru kayıtları (içerik paneli, /admin/): başlığın altında künye satırı
+local TUR = {
+  tr = { konferans = "konferans", calistay = "çalıştay", duyuru = "duyuru" },
+  en = { konferans = "conference", calistay = "workshop", duyuru = "announcement" },
+}
+local AYLAR = {
+  tr = { "ocak", "şubat", "mart", "nisan", "mayıs", "haziran", "temmuz", "ağustos", "eylül", "ekim", "kasım", "aralık" },
+  en = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" },
+}
+
+local function tarihYazi(s, dil)
+  local y, a, g = (s or ""):match("^(%d%d%d%d)-(%d%d)-(%d%d)")
+  if not y then return s end
+  return string.format("%d %s %s", tonumber(g), AYLAR[dil][tonumber(a)], y)
+end
+
+local function kayitKunyesi(m, dil)
+  local tur = yazi(m["tur"])
+  if not tur then return nil end
+  local en = dil == "en"
+  local satir = {}
+  local function ekle(etiket, deger)
+    table.insert(satir, string.format("<dt>%s</dt><dd>%s</dd>", etiket, deger))
+  end
+  ekle(en and "type" or "tür", kacis(TUR[en and "en" or "tr"][tur] or tur))
+  local yayin = yazi(m["date"])
+  if yayin then ekle(en and "published" or "yayın", kacis(tarihYazi(yayin, en and "en" or "tr"))) end
+  local et = yazi(m["etkinlik-tarihi"])
+  if et then ekle(en and "date" or "tarih", kacis(et)) end
+  local yer = yazi(m["yer"])
+  if yer then ekle(en and "venue" or "yer", kacis(yer)) end
+  local bag = yazi(m["baglanti"])
+  if bag and bag:match("^https?://") then
+    ekle(en and "link" or "bağlantı", string.format('<a href="%s">%s</a>', kacis(bag),
+      kacis((bag:gsub("^https?://", ""):gsub("/$", "")))))
+  end
+  return pandoc.RawBlock("html", '<div class="recep-proje-kunye recep-kayit-kunye"><dl>' .. table.concat(satir) .. "</dl></div>")
+end
+
 function Pandoc(doc)
   if not quarto.doc.is_format("html") then return nil end
+  local kunye = kayitKunyesi(doc.meta, yazi(doc.meta["lang"]) or "tr")
+  if kunye then table.insert(doc.blocks, 1, kunye) end
   local m = doc.meta
   local dil = yazi(m["lang"]) or "tr"
   local sekme, dosya, derinlik, parcalar = konum()
   ceviriBaglantisi(dil, parcalar, derinlik)
-  if m["hero"] == false or yazi(m["hero"]) == "false" then return nil end
+  if m["hero"] == false or yazi(m["hero"]) == "false" then return doc end
   if dosya == "index.en" then dosya = "index" end
   local baslik = yazi(m["hero-baslik"]) or yazi(m["title"]) or yazi(m["pagetitle"]) or ""
   local alt = yazi(m["description"])
@@ -176,7 +217,7 @@ function Pandoc(doc)
   end
 
   local eserAdi = yazi(m["hero-eser"]) or SEKME[sekme]
-  if not eserAdi or not ESER[eserAdi] then return nil end
+  if not eserAdi or not ESER[eserAdi] then return doc end
   local eser = ESER[eserAdi]
 
   local boyut = yazi(m["hero-boyut"])
