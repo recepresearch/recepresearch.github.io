@@ -11,6 +11,7 @@ project:
     - "veri-kod/*.qmd"
     - "araclar/*.qmd"
     - "konferans-calistay/**/*.qmd"
+    - "konferans-calistay/posts/**/*.md"    # içerik panelinden (/admin/) girilen kayıtlar
     - "iletisim/*.qmd"
 
 lang: tr

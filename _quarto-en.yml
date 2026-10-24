@@ -12,6 +12,7 @@ project:
     - "data-code/*.qmd"
     - "tools/*.qmd"
     - "conferences-workshops/**/*.qmd"
+    - "conferences-workshops/posts/**/*.md"  # entries from the content panel (/admin/)
     - "contact/*.qmd"
 
 lang: en

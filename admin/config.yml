@@ -46,8 +46,8 @@ collections:
     folder: konferans-calistay/posts
     path: "{{slug}}/index"
     slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    extension: qmd
-    format: yaml-frontmatter
+    extension: md
+    format: frontmatter
     media_folder: ""
     public_folder: ""
     create: true
@@ -123,8 +123,8 @@ collections:
     folder: conferences-workshops/posts
     path: "{{slug}}/index"
     slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    extension: qmd
-    format: yaml-frontmatter
+    extension: md
+    format: frontmatter
     media_folder: ""
     public_folder: ""
     create: true
