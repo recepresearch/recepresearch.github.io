@@ -9,9 +9,11 @@ backend:
   name: github
   repo: recepresearch/recepresearch.github.io
   branch: main
-  # "GitHub ile giriş" düğmesi için OAuth aracısı (Cloudflare Worker, sveltia-cms-auth).
-  # Kurulana kadar giriş, kişisel erişim anahtarı (token) ile yapılır.
-  # base_url: https://recep-cms-auth.<hesap>.workers.dev
+  # "GitHub ile giriş" düğmesi için OAuth aracısı: Cloudflare Worker "recep-cms-auth"
+  # (sveltia/sveltia-cms-auth, src/index.js @ 25f56e1), özel alan adı auth.recepresearch.org.
+  # Değişkenler: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET (gizli), ALLOWED_DOMAINS=recepresearch.org.
+  # GitHub OAuth App (recepresearch org) callback: https://auth.recepresearch.org/callback
+  base_url: https://auth.recepresearch.org
   commit_messages:
     create: "içerik: {{collection}} / {{slug}} eklendi"
     update: "içerik: {{collection}} / {{slug}} güncellendi"
