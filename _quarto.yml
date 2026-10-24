@@ -6,6 +6,7 @@ project:
     - "/assets/marka/"
     - "/assets/sanat/"
     - "/assets/js/kure.js"
+    - "/assets/katex/"      # matematik dizgisi: CDN yerine kendi sunucumuzdan (sürüm sabit, 0.16.22)
     - "/admin/"             # içerik paneli (Sveltia CMS) — derlenmez, olduğu gibi kopyalanır
 
 # Çift dil: Quarto proje profilleri. Varsayılan tr.
@@ -118,7 +119,9 @@ format:
     highlight-style:
       light: github
       dark: github-dark
-    html-math-method: katex
+    html-math-method:
+      method: katex
+      url: "/assets/katex/"
     link-external-icon: false
     link-external-newwindow: true
     fig-responsive: true

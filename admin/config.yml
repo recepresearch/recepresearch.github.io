@@ -14,6 +14,8 @@ backend:
   # Değişkenler: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET (gizli), ALLOWED_DOMAINS=recepresearch.org.
   # GitHub OAuth App (recepresearch org) callback: https://auth.recepresearch.org/callback
   base_url: https://auth.recepresearch.org
+  # Depo herkese açık: giriş yalnızca açık depolara yazma izni ister (kişinin özel depolarına erişim istenmez).
+  auth_scope: public_repo
   commit_messages:
     create: "içerik: {{collection}} / {{slug}} eklendi"
     update: "içerik: {{collection}} / {{slug}} güncellendi"

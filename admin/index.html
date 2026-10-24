@@ -8,9 +8,11 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <!-- İçerik paneli: Sveltia CMS. Ayarlar aynı klasördeki config.yml'de.
+  <!-- İçerik paneli: Sveltia CMS 0.231.0 (MIT, LICENSE.txt). Ayarlar aynı klasördeki config.yml'de.
        Girilen içerik doğrudan GitHub deposuna commit edilir; publish iş akışı siteyi 2–3 dakikada günceller.
-       Sürüm sabit tutulur; yükseltirken https://www.npmjs.com/package/@sveltia/cms adresinden yeni sürümü yazın. -->
-  <script src="https://unpkg.com/@sveltia/cms@0.231.0/dist/sveltia-cms.js"></script>
+       Güvenlik: panel kodu bir CDN'den değil, bu klasörden yüklenir (sveltia-cms.js + chunks/), böylece giriş
+       anahtarının saklandığı sayfada yalnızca bizim sunduğumuz kod çalışır. Yükseltme: npm'deki @sveltia/cms
+       paketinin dist/sveltia-cms.js ve dist/chunks/ dosyalarını buraya kopyalayın. -->
+  <script src="sveltia-cms.js"></script>
 </body>
 </html>
