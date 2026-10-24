@@ -136,27 +136,83 @@ local function cikti(anahtar)
   return anahtar .. ".html"
 end
 
--- karşı dildeki eşin adresi: <meta name="recep-ceviri"> (göreli) + hreflang (mutlak)
+-- arama motorları için yayındaki tam adres: ".../index.html" → ".../"
+local function tamAdres(yol)
+  return SITE .. yol:gsub("index%.html$", "")
+end
+
+-- karşı dildeki eşin adresi: <meta name="recep-ceviri"> (göreli) + canonical ve hreflang (mutlak).
+-- hreflang yalnızca gerçek bir eş varsa yazılır (eşi olmayan sayfa karşı dilin ana sayfasına gider ama
+-- arama motoruna onun çevirisiymiş gibi bildirilmez).
 local function ceviriBaglantisi(dil, parcalar, derinlik)
   local anahtar = table.concat(parcalar, "/"):gsub("%.qmd$", ""):gsub("%.md$", "")
   local ofset = derinlik == 0 and "./" or string.rep("../", derinlik)
-  local trYol, enYol, hedef
+  local trYol, enYol, hedef, esVar, kendi
   if dil == "en" then
+    esVar = TERS[anahtar] ~= nil
     enYol = cikti(anahtar)
-    trYol = TERS[anahtar] and cikti(TERS[anahtar]) or "index.html"
+    trYol = esVar and cikti(TERS[anahtar]) or "index.html"
     hedef = ofset .. "../" .. trYol              -- _site/en/… → _site/…
+    kendi = tamAdres("en/" .. enYol)
   else
+    esVar = CEVIRI[anahtar] ~= nil
     trYol = cikti(anahtar)
-    enYol = CEVIRI[anahtar] and cikti(CEVIRI[anahtar]) or "index.html"
+    enYol = esVar and cikti(CEVIRI[anahtar]) or "index.html"
     hedef = ofset .. "en/" .. enYol
+    kendi = tamAdres(trYol)
     -- 404 herhangi bir adreste gösterilir: göreli yol kırılır, mutlak adres kullan
     if anahtar == "404" then hedef = SITE .. "en/" .. enYol end
   end
-  quarto.doc.include_text("in-header", string.format(
-    '<meta name="recep-ceviri" content="%s">\n' ..
-    '<link rel="alternate" hreflang="tr" href="%s%s">\n' ..
-    '<link rel="alternate" hreflang="en" href="%sen/%s">',
-    hedef, SITE, trYol, SITE, enYol))
+  local satirlar = { string.format('<meta name="recep-ceviri" content="%s">', hedef) }
+  if anahtar ~= "404" then
+    table.insert(satirlar, string.format('<link rel="canonical" href="%s">', kendi))
+  end
+  if esVar then
+    table.insert(satirlar, string.format('<link rel="alternate" hreflang="tr" href="%s">', tamAdres(trYol)))
+    table.insert(satirlar, string.format('<link rel="alternate" hreflang="en" href="%s">', tamAdres("en/" .. enYol)))
+    table.insert(satirlar, string.format('<link rel="alternate" hreflang="x-default" href="%s">', tamAdres(trYol)))
+  end
+  quarto.doc.include_text("in-header", table.concat(satirlar, "\n"))
+end
+
+-- yapılandırılmış veri (schema.org, JSON-LD): Google'ın bilgi kartı ve etkinlik sonuçları için
+local function jsonYazi(s)
+  return '"' .. s:gsub('\\', '\\\\'):gsub('"', '\\"'):gsub("\n", " "):gsub("<", "\\u003c") .. '"'
+end
+
+local function jsonNesne(t)
+  local parca = {}
+  for _, cift in ipairs(t) do
+    local k, v = cift[1], cift[2]
+    if v ~= nil then
+      local deger = type(v) == "table" and jsonNesne(v) or jsonYazi(v)
+      table.insert(parca, jsonYazi(k) .. ":" .. deger)
+    end
+  end
+  return "{" .. table.concat(parca, ",") .. "}"
+end
+
+local function jsonLd(nesne)
+  quarto.doc.include_text("in-header",
+    '<script type="application/ld+json">' .. jsonNesne(nesne) .. "</script>")
+end
+
+-- ana sayfa: araştırma grubu (YTÜ'ye bağlı kurum)
+local function kurumBilgisi(dil)
+  local en = dil == "en"
+  jsonLd({
+    { "@context", "https://schema.org" },
+    { "@type", "ResearchOrganization" },
+    { "name", "RECEP" },
+    { "alternateName", en and "Environment, Clean Energy and Economic Policies Research Group"
+                           or "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu" },
+    { "url", en and SITE .. "en/" or SITE },
+    { "logo", SITE .. "assets/marka/apple-touch-icon.png" },
+    { "address", { { "@type", "PostalAddress" }, { "addressLocality", "İstanbul" }, { "addressCountry", "TR" } } },
+    { "parentOrganization", { { "@type", "CollegeOrUniversity" },
+                              { "name", en and "Yıldız Technical University" or "Yıldız Teknik Üniversitesi" },
+                              { "url", "https://www.yildiz.edu.tr" } } },
+  })
 end
 
 -- konferans / çalıştay / duyuru kayıtları (içerik paneli, /admin/): başlığın altında künye satırı
@@ -169,25 +225,76 @@ local AYLAR = {
   en = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" },
 }
 
-local function tarihYazi(s, dil)
+local function isoTarih(s)
   local y, a, g = (s or ""):match("^(%d%d%d%d)-(%d%d)-(%d%d)")
+  if y then return y, tonumber(a), tonumber(g) end
+end
+
+local function tarihYazi(s, dil)
+  local y, a, g = isoTarih(s)
   if not y then return s end
-  return string.format("%d %s %s", tonumber(g), AYLAR[dil][tonumber(a)], y)
+  return string.format("%d %s %s", g, AYLAR[dil][a], y)
+end
+
+-- etkinlik tarih aralığı: "12–13 kasım 2026" · "30 ekim – 2 kasım 2026" · tek gün "12 kasım 2026"
+local function aralikYazi(bas, bit, dil)
+  local y1, a1, g1 = isoTarih(bas)
+  local y2, a2, g2 = isoTarih(bit)
+  if not y1 then return bas end
+  if not y2 or bit == bas then return tarihYazi(bas, dil) end
+  if y1 ~= y2 then return tarihYazi(bas, dil) .. " – " .. tarihYazi(bit, dil) end
+  if a1 ~= a2 then
+    return string.format("%d %s – %d %s %s", g1, AYLAR[dil][a1], g2, AYLAR[dil][a2], y1)
+  end
+  return string.format("%d–%d %s %s", g1, g2, AYLAR[dil][a1], y1)
+end
+
+-- konferans / çalıştay: başlangıç tarihi varsa Google'a etkinlik olarak bildir
+local function etkinlikBilgisi(m, dil, tur)
+  local bas = yazi(m["baslangic"])
+  if (tur ~= "konferans" and tur ~= "calistay") or not isoTarih(bas) then return end
+  local bit = isoTarih(yazi(m["bitis"])) and yazi(m["bitis"]) or nil
+  local yer = yazi(m["yer"])
+  local kucuk = yer and pandoc.text.lower(yer) or ""
+  local cevrimici = (kucuk:find("çevrim", 1, true) or kucuk:find("online", 1, true)) and true or false
+  local konum
+  if cevrimici then
+    konum = { { "@type", "VirtualLocation" }, { "url", yazi(m["baglanti"]) or SITE } }
+  elseif yer then
+    konum = { { "@type", "Place" }, { "name", yer }, { "address", yer } }
+  end
+  local resim = yazi(m["image"])
+  jsonLd({
+    { "@context", "https://schema.org" },
+    { "@type", "Event" },
+    { "name", yazi(m["title"]) or "" },
+    { "description", yazi(m["description"]) },
+    { "startDate", bas },
+    { "endDate", bit },
+    { "eventStatus", "https://schema.org/EventScheduled" },
+    { "eventAttendanceMode", cevrimici and "https://schema.org/OnlineEventAttendanceMode"
+                                        or "https://schema.org/OfflineEventAttendanceMode" },
+    { "location", konum },
+    { "image", resim and resim:match("^https?://") and resim or nil },
+    { "inLanguage", dil },
+    { "organizer", { { "@type", "ResearchOrganization" }, { "name", "RECEP" }, { "url", SITE } } },
+  })
 end
 
 local function kayitKunyesi(m, dil)
   local tur = yazi(m["tur"])
   if not tur then return nil end
   local en = dil == "en"
+  etkinlikBilgisi(m, dil, tur)
   local satir = {}
   local function ekle(etiket, deger)
     table.insert(satir, string.format("<dt>%s</dt><dd>%s</dd>", etiket, deger))
   end
   ekle(en and "type" or "tür", kacis(TUR[en and "en" or "tr"][tur] or tur))
-  local yayin = yazi(m["date"])
-  if yayin then ekle(en and "published" or "yayın", kacis(tarihYazi(yayin, en and "en" or "tr"))) end
-  local et = yazi(m["etkinlik-tarihi"])
-  if et then ekle(en and "date" or "tarih", kacis(et)) end
+  local yayin = yazi(m["date"])     -- Quarto bu alanı date-format ile biçimlendirmiş getirir
+  if yayin then ekle(en and "published" or "yayın", kacis(pandoc.text.lower(tarihYazi(yayin, en and "en" or "tr")))) end
+  local bas = yazi(m["baslangic"])
+  if bas then ekle(en and "date" or "tarih", kacis(aralikYazi(bas, yazi(m["bitis"]), en and "en" or "tr"))) end
   local yer = yazi(m["yer"])
   if yer then ekle(en and "venue" or "yer", kacis(yer)) end
   local bag = yazi(m["baglanti"])
@@ -206,6 +313,7 @@ function Pandoc(doc)
   local dil = yazi(m["lang"]) or "tr"
   local sekme, dosya, derinlik, parcalar = konum()
   ceviriBaglantisi(dil, parcalar, derinlik)
+  if sekme == "ana" then kurumBilgisi(dil) end
   if m["hero"] == false or yazi(m["hero"]) == "false" then return doc end
   if dosya == "index.en" then dosya = "index" end
   local baslik = yazi(m["hero-baslik"]) or yazi(m["title"]) or yazi(m["pagetitle"]) or ""

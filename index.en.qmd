@@ -1,5 +1,6 @@
 ---
-pagetitle: "recep — environment, clean energy and economic policies research group"
+pagetitle: "RECEP · Environment, Clean Energy and Economic Policies Research Group | Yıldız Technical University"
+title-prefix: ""
 hero-baslik: "recep"
 description: "Environment, Clean Energy and Economic Policies Research Group"
 output-file: index.html

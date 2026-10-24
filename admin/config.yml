@@ -84,16 +84,27 @@ collections:
         name: description
         widget: text
         hint: "Bir iki cümle. Liste kartında ve sayfanın başında görünür."
-      - label: etkinlik tarihi
-        name: etkinlik-tarihi
-        widget: string
+      - label: etkinlik başlangıcı
+        name: baslangic
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
         required: false
-        hint: "Serbest metin, ör. 12–13 kasım 2026. Duyurularda boş bırakılabilir."
+        hint: "Konferans ve çalıştaylarda doldurun: sayfada gösterilir ve Google'a etkinlik olarak bildirilir."
+      - label: etkinlik bitişi
+        name: bitis
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        required: false
+        hint: "Tek günlük etkinlikte boş bırakın."
       - label: yer
         name: yer
         widget: string
         required: false
-        hint: "ör. YTÜ Davutpaşa Kampüsü, İstanbul · çevrim içi"
+        hint: "ör. YTÜ Davutpaşa Kampüsü, İstanbul. Çevrim içi etkinlikte \"çevrim içi\" yazın."
       - label: bağlantı
         name: baglanti
         widget: string

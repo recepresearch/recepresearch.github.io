@@ -25,7 +25,7 @@ execute:
   freeze: auto   # R çıktıları _freeze/ içine yazılır ve commit edilir; CI'da R gerekmez
 
 website:
-  title: "recep"
+  title: "RECEP"           # sekme başlığı son eki ve og:site_name (navbar yazısı ayrı: navbar.title)
   favicon: assets/favicon.svg
   image: assets/og.png
   open-graph: true

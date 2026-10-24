@@ -1,5 +1,5 @@
 ---
-pagetitle: "404 — recep"
+pagetitle: "404 · sayfa bulunamadı"
 hero-baslik: "404"
 description: "Aradığınız sayfa taşınmış veya hiç var olmamış olabilir."
 toc: false

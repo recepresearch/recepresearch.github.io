@@ -1,5 +1,6 @@
 ---
-pagetitle: "recep — çevre, temiz enerji ve ekonomi politikaları araştırma grubu"
+pagetitle: "RECEP · Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu | YTÜ"
+title-prefix: ""
 hero-baslik: "recep"
 description: "Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu"
 page-layout: full
