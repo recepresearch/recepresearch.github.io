@@ -3,7 +3,8 @@ title: TÜBA Karbon Ekonomisi Çalıştayı
 tur: calistay
 date: 2026-10-24
 description: Prof. Dr. Tunç Durmaz, TÜBA çalıştayında yeşil dönüşüm politikalarının demir-çelik, çimento ve alüminyum sektörlerine etkilerini sundu.
-etkinlik-tarihi: 16–17 Ekim 2026
+baslangic: 2026-10-16
+bitis: 2026-10-17
 yer: Uşak Üniversitesi, Uşak
 baglanti: https://yildiz.edu.tr/universite/haberler/ytu-akademisyenlerinden-yesil-mutabakat-ve-karbon-ekonomisine-bilimsel-katki
 image: oturum-prof.-dr.-durmaz.jpg

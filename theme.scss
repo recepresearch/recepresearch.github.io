@@ -566,7 +566,7 @@ h2.recep-liste-baslik + div .listing-no-matching {
   &::before { content: "— "; }
   &::after  { content: " —"; }
 }
-.recep-kayit-kunye { margin-top: .5rem; }
+.recep-kayit-kunye { margin-top: .5rem; dd a { overflow-wrap: anywhere; } }
 
 // ============ ekip ============
 .recep-people-group h2 { text-align: left; }
