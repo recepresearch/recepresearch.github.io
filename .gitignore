@@ -10,3 +10,6 @@
 Thumbs.db
 
 **/*.quarto_ipynb
+
+# proje hafızası: yalnızca yerelde tutulur, depoya gönderilmez
+memory.md
