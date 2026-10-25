@@ -116,6 +116,11 @@ collections:
         widget: image
         required: false
         hint: "İsteğe bağlı. Liste kartında görünür; yatay görsel önerilir (ör. 1200×630)."
+      - label: kapak görseli açıklaması
+        name: image-alt
+        widget: string
+        required: false
+        hint: "Görme engelli ziyaretçiler ve Google için görselde ne olduğunu bir cümleyle yazın. Boş kalırsa başlık kullanılır."
       - label: taslak
         name: draft
         widget: boolean

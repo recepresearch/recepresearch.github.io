@@ -560,6 +560,8 @@ table.table { font-size: .95rem; }
 }
 // konferans ve çalıştaylar: türe göre üç liste (kayıtlar /admin/ panelinden girilir)
 h2.recep-liste-baslik { margin-top: 3rem; }
+// boş liste: Quarto "kayıt yok" metnini d-none ile gizler; listede hiç kart yokken göster
+h2.recep-liste-baslik + .quarto-listing:not(:has(.g-col-1)) .listing-no-matching { display: block !important; }
 h2.recep-liste-baslik + div .listing-no-matching {
   font-family: var(--font-editorial); font-style: italic; font-size: 1.05rem;
   color: $recep-muted; text-align: center; margin: 1rem 0 2rem;
@@ -567,6 +569,8 @@ h2.recep-liste-baslik + div .listing-no-matching {
   &::after  { content: " —"; }
 }
 .recep-kayit-kunye { margin-top: .5rem; dd a { overflow-wrap: anywhere; } }
+// liste kartı tarihi ve önceki/sonraki sayfa bağlantısı: Bootstrap'ın varsayılan grisi (#6c757d) gece zemininde yetersiz kontrast veriyordu
+.quarto-grid-item .listing-date, .page-navigation .nav-page-text { color: $recep-muted; }
 
 // ============ ekip ============
 .recep-people-group h2 { text-align: left; }

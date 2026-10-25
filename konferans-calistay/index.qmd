@@ -1,5 +1,6 @@
 ---
 title: "konferans ve çalıştaylar"
+html-math-method: plain   # liste sayfası, matematik yok: KaTeX (270 KB) yüklenmesin
 description: "Konferanslar, çalıştaylar ve duyurular."
 toc: false
 aliases:

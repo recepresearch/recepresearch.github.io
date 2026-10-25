@@ -1,5 +1,6 @@
 ---
 title: "conferences & workshops"
+html-math-method: plain   # liste sayfası, matematik yok: KaTeX (270 KB) yüklenmesin
 description: "Conferences, workshops and announcements."
 toc: false
 aliases:

@@ -99,7 +99,8 @@ format:
               if (i) { var ay = document.createElement("span"); ay.textContent = "/"; ay.setAttribute("aria-hidden", "true"); d.appendChild(ay); }
               var a = document.createElement("a");
               a.textContent = k; a.lang = k; a.hreflang = k;
-              if (k === dil) { a.className = "aktif"; a.setAttribute("aria-current", "true"); }
+              // etkin dil kendi sayfasını gösterir: href'siz bağlantı arama motorlarınca okunamıyordu
+              if (k === dil) { a.className = "aktif"; a.setAttribute("aria-current", "page"); a.href = location.pathname; }
               else { a.href = karsi; a.title = k === "en" ? "English" : "Türkçe"; }
               d.appendChild(a);
             });
@@ -107,6 +108,20 @@ format:
             // dar ekranda logo ile ikonlar arasında yer yok: bir kopyası açılır menünün en altında
             var menu = document.querySelector(".navbar .navbar-collapse");
             if (menu) { var k = d.cloneNode(true); k.classList.add("recep-dil--menu"); menu.appendChild(k); }
+          })();
+          // erişilebilirlik: Quarto'nun ürettiği işaretlemede görünümü değiştirmeyen düzeltmeler
+          (function () {
+            // menü düğmesi bir menü değil, açılır paneli kontrol eden düğme
+            var t = document.querySelector(".navbar-toggler[role='menu']");
+            if (t) t.removeAttribute("role");
+            // liste kartları: başlıklar h5 olarak gelir (h2'den sonra seviye atlar) → ekran okuyucuya 3. seviye;
+            // kapak görselinde açıklama yoksa kaydın başlığı kullanılır
+            document.querySelectorAll(".quarto-grid-item").forEach(function (kart) {
+              var b = kart.querySelector(".listing-title");
+              if (b) { b.setAttribute("role", "heading"); b.setAttribute("aria-level", "3"); }
+              var g = kart.querySelector("img.thumbnail-image:not([alt])");
+              if (g) g.alt = b ? b.textContent.trim() : "";
+            });
           })();
         </script>
     toc: true

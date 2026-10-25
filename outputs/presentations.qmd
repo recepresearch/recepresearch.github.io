@@ -1,5 +1,6 @@
 ---
 title: "presentations and workshop materials"
+html-math-method: plain   # liste sayfası, matematik yok: KaTeX (270 KB) yüklenmesin
 order: 3
 toc: false
 listing:

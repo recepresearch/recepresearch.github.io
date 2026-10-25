@@ -1,5 +1,6 @@
 ---
 title: "çalışma tebliğleri ve makaleler"
+html-math-method: plain   # liste sayfası, matematik yok: KaTeX (270 KB) yüklenmesin
 order: 2
 toc: false
 listing:
