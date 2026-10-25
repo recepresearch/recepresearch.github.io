@@ -208,7 +208,7 @@
       c.setAttribute("role", "img");
       c.setAttribute("aria-label", "dönen dünya küresi; İstanbul kırmızı noktayla işaretli");
       img.replaceWith(c);
-      kur(c, { hiz: 0.018 });
+      kur(c, { hiz: 0.018, renk: cssRenkler });   // menü temaya uyar (v7): küre de tema renklerini alır
     });
     // sayfa içi büyük küre(ler)
     document.querySelectorAll(".recep-kure").forEach(kap => {

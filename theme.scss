@@ -2,7 +2,7 @@
 // ============================================================
 // RECEP tasarım sistemi — "Elegant Cyber-Renaissance / High-End Editorial Brutalism"
 // Bu dosya AÇIK temanın paletini ve TÜM kuralları içerir.
-// theme-dark.scss yalnızca paleti ezer (gece teması, varsayılan).
+// theme-dark.scss yalnızca paleti ezer (gece teması; varsayılan AÇIK tema, v7).
 // İlke: kutu yok, neon çerçeve yok. İnce saç çizgileri, bol boşluk,
 // ana sayfada dönen küre; alt sayfalarda görselsiz, sade ve ferah dev başlıklar.
 // ============================================================
@@ -19,11 +19,8 @@ $recep-on-green: #FFFFFF !default;
 $recep-red:      #D90F3C !default;   // Türkiye işareti (küre)
 
 
-// Navbar her iki temada da gece renginde kalır (marka şeridi)
-$recep-night:       #05080D;
-$recep-night-ink:   #ECEAE4;
-$recep-night-muted: #8E918F;
-$recep-neon:        #39FF14;
+// Navbar temaya uyar (v7): zeminin yarı saydam hali + buzlu cam (backdrop-filter)
+$recep-nav-bg:      rgba($recep-paper, .78);
 
 // ---- tipografi: 3 katman ----
 // 1 · Inter 900          → YALNIZCA dev sayfa başlıkları (DynamicHero) + logo
@@ -64,9 +61,9 @@ $border-color:       $recep-line !default;
 $primary:            $recep-ink !default;
 $secondary:          $recep-muted !default;
 
-$navbar-bg:          $recep-night;
-$navbar-fg:          $recep-night-ink;
-$navbar-hl:          $recep-night-ink;
+$navbar-bg:          $recep-paper;
+$navbar-fg:          $recep-ink;
+$navbar-hl:          $recep-ink;
 $footer-bg:          $recep-paper !default;
 $footer-fg:          $recep-muted !default;
 $sidebar-bg:         transparent !default;   // filigran sidebar altında kesilmesin
@@ -155,8 +152,10 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
 #quarto-header { top: 0; z-index: 9999; transform: none !important; }
 
 .navbar {
-  background-color: $recep-night !important;
-  border-bottom: 1px solid rgba(255, 255, 255, .07);
+  background-color: $recep-nav-bg !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid $recep-line;
   box-shadow: none;
   padding: 0;
   min-height: 68px;
@@ -193,11 +192,11 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   font-family: var(--font-brutal);
   font-weight: 900; font-size: 1.6rem; line-height: 1;
   letter-spacing: -0.05em; text-transform: lowercase;
-  color: #F2F5F7;
+  color: $recep-ink;
   padding: .12em .42em .2em;
   &::before, &::after {
     content: ""; position: absolute; top: 0; bottom: 0; width: .26em;
-    border: .1em solid $recep-neon;
+    border: .1em solid $recep-green;
   }
   &::before { left: 0; border-right: none; }
   &::after  { right: 0; border-left: none; }
@@ -208,7 +207,7 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   position: relative;
   font-family: var(--font-terminal);
   font-size: .74rem; letter-spacing: .06em; text-transform: lowercase; white-space: nowrap;
-  color: $recep-night-muted !important;
+  color: $recep-muted !important;
   padding: .5rem .62rem !important;
   border: none;
   transition: color .15s ease;
@@ -216,18 +215,18 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
     content: ""; position: absolute; left: .62rem; right: .62rem; bottom: .2rem; height: 1px;
     background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
   }
-  &:hover { color: $recep-night-ink !important; }
+  &:hover { color: $recep-ink !important; }
   &:hover::after, &.active::after { transform: scaleX(1); }
-  &.active { color: $recep-night-ink !important; }
+  &.active { color: $recep-ink !important; }
 }
 
 .navbar .quarto-navigation-tool,
 .navbar .quarto-color-scheme-toggle,
 .navbar .aa-DetachedSearchButtonIcon,
-.navbar #quarto-search .aa-SubmitIcon { color: $recep-night-muted !important; }
+.navbar #quarto-search .aa-SubmitIcon { color: $recep-muted !important; }
 .navbar .quarto-navigation-tool:hover,
-.navbar .quarto-color-scheme-toggle:hover { color: $recep-night-ink !important; }
-.navbar .navbar-toggler { border: 1px solid rgba(255, 255, 255, .15); }
+.navbar .quarto-color-scheme-toggle:hover { color: $recep-ink !important; }
+.navbar .navbar-toggler { border: 1px solid $recep-line; }
 
 .navbar .quarto-navbar-tools {
   position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%);
@@ -237,20 +236,20 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
 .aa-DetachedOverlay, .aa-Panel { z-index: 10000 !important; }
 
 // dil seçici (tr / en): navbar'ın sağ kenarında, aramanın solunda; mutlak konum →
-// ortadaki küre + [recep] ve bölünmüş menü ızgarası hiç kaymaz. Her iki temada gece rengi.
+// ortadaki küre + [recep] ve bölünmüş menü ızgarası hiç kaymaz. Temanın vurgu yeşili.
 .navbar .recep-dil {
   position: absolute; right: 3.6rem; top: 50%; transform: translateY(-50%);
   display: flex; align-items: center;
   font-family: var(--font-terminal); font-size: .7rem; line-height: 1;
   letter-spacing: .06em; text-transform: lowercase;
-  background: $recep-night; color: $recep-neon;
-  border: 1px solid $recep-neon; border-radius: 0;
-  a, span { padding: .38rem .5rem; color: $recep-neon; text-decoration: none; }
+  background: transparent; color: $recep-green;
+  border: 1px solid $recep-green; border-radius: 0;
+  a, span { padding: .38rem .5rem; color: $recep-green; text-decoration: none; }
   span { padding: .38rem 0; opacity: .5; }
   a:not(.aktif) { opacity: .55; transition: opacity .15s ease; }
   a:not(.aktif):hover { opacity: 1; }
-  a.aktif { background: $recep-neon; color: $recep-night; }
-  a:focus-visible { outline: 1px solid $recep-neon; outline-offset: 2px; }
+  a.aktif { background: $recep-green; color: $recep-on-green; }
+  a:focus-visible { outline: 1px solid $recep-green; outline-offset: 2px; }
 }
 @media (min-width: 1400px) {
   .navbar .navbar-nav.ms-auto { padding-right: 9rem; }   // sağ menü seçiciye taşmasın
@@ -289,7 +288,7 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   .navbar #quarto-search { top: 34px; }
   .navbar-brand { padding: .5rem .5rem; }
   .navbar .navbar-nav { align-items: stretch; gap: 0; padding-bottom: .5rem; }
-  .navbar .nav-link { padding: .7rem .25rem !important; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+  .navbar .nav-link { padding: .7rem .25rem !important; border-bottom: 1px solid $recep-line; }
   .navbar .nav-link::after { display: none; }
 }
 @media (max-width: 575.98px) {

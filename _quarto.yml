@@ -48,15 +48,15 @@ website:
 format:
   html:
     theme:
-      dark: [theme.scss, theme-dark.scss]   # ilk sıradaki tema varsayılandır: gece
-      light: [theme.scss]
+      light: [theme.scss]                   # ilk sıradaki tema varsayılandır: açık (v7)
+      dark: [theme.scss, theme-dark.scss]
     respect-user-color-scheme: false
     css: assets/fonts.css
     include-in-header:
       text: |
-        <meta name="theme-color" content="#05080D">
+        <meta name="theme-color" content="#F4F2EC">
         <script>
-          // Ana mod gece; açık tema yalnızca oturumluk bir seçenek.
+          // Ana mod açık (v7); gece teması yalnızca oturumluk bir seçenek.
           // Quarto tema seçimini localStorage'a kalıcı yazar: her yeni tarayıcı oturumunun
           // ilk sayfasında bu kaydı sil → site hep gece temasıyla açılır. Oturum içinde
           // (sayfadan sayfaya) düğmeyle seçilen tema korunur.
@@ -79,7 +79,7 @@ format:
             var m = document.querySelector('meta[name="quarto:offset"]');
             var s = document.createElement("script");
             // ?v= sürüm etiketi: kure.js her değiştiğinde artırın (tarayıcı önbelleği eski betiği tutmasın)
-            s.src = (m ? m.content : "./") + "assets/js/kure.js?v=6";
+            s.src = (m ? m.content : "./") + "assets/js/kure.js?v=7";
             s.defer = true;
             document.body.appendChild(s);
           })();
