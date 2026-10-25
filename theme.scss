@@ -4,7 +4,7 @@
 // Bu dosya AÇIK temanın paletini ve TÜM kuralları içerir.
 // theme-dark.scss yalnızca paleti ezer (gece teması, varsayılan).
 // İlke: kutu yok, neon çerçeve yok. İnce saç çizgileri, bol boşluk,
-// ana sayfada dönen küre; alt sayfalarda 1-bit Rönesans tuvali + dev, sıkı başlıklar.
+// ana sayfada dönen küre; alt sayfalarda görselsiz, sade ve ferah dev başlıklar.
 // ============================================================
 
 // ---- palet ----
@@ -18,9 +18,6 @@ $recep-blue:     #0077CC !default;   // bağlantı
 $recep-on-green: #FFFFFF !default;
 $recep-red:      #D90F3C !default;   // Türkiye işareti (küre)
 
-// sanat tuvali (alt sayfa hero): 1-bit eser, zemin rengiyle karışır
-$recep-tuval-zemin:   #0033FF !default;   // kobalt: siyah pikseller maviye döner
-$recep-tuval-karisim: screen !default;
 
 // Navbar her iki temada da gece renginde kalır (marka şeridi)
 $recep-night:       #05080D;
@@ -335,93 +332,42 @@ blockquote { font-style: italic; border-left: 1px solid $recep-ink; padding-left
   b { color: $recep-red; font-weight: 400; }
 }
 
-// ============ alt sayfalar: art canvas hero (_extensions/recep/hero) ============
-// Tuval sütun genişliğinde, tam opak. Eser 1-bit dither PNG; renk, tuval zemini ile
-// karışımdan gelir (açık: kobalt mavi / beyaz · gece: zifiri / kırık beyaz).
-// Başlık sol alt köşeye demirli; zemin renginde bir levha olarak tuvalden taşar.
+// ============ alt sayfalar: sade başlık (_extensions/recep/hero) ============
+// Görsel yok: yol satırı, dev başlık ve açıklama; bol boşlukla açık ve ferah.
 body:has(.recep-dhero) #title-block-header { display: none; }
 
 .recep-dhero {
   --baslik: clamp(3.2rem, 14cqi, 9rem);
-  --tuval-oran: 16 / 9;
   container-type: inline-size;
   width: 100%; max-width: 64rem;
-  margin: clamp(1.25rem, 3vw, 2.5rem) auto clamp(2rem, 5vw, 3.5rem);
+  margin: clamp(2.5rem, 7vw, 5.5rem) auto clamp(2.5rem, 5vw, 4rem);
 }
-.recep-dhero--orta { --baslik: clamp(2.6rem, 9cqi, 6rem); --tuval-oran: 21 / 9; }
+.recep-dhero--orta { --baslik: clamp(2.6rem, 9cqi, 6rem); }
 
 .recep-dhero-meta {
-  display: flex; justify-content: space-between; gap: 1rem;
   font-family: var(--font-terminal); font-size: .66rem; letter-spacing: .12em;
   text-transform: lowercase; color: $recep-muted;
-  padding-bottom: .5rem;
+  margin-bottom: clamp(.75rem, 2vw, 1.25rem);
 }
 
 // hero-meta ile verilen terminal etiketi: büyük harf korunur, neon vurgu
 .recep-dhero-meta--etiket span:first-child { color: $recep-green; text-transform: none; letter-spacing: .08em; }
 
-.recep-dhero-tuval {
-  position: relative;
-  isolation: isolate;                    // karışım yalnızca tuval zeminiyle
-  aspect-ratio: var(--tuval-oran);
-  background: $recep-tuval-zemin;
-  img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    image-rendering: pixelated;          // dither pikselleri keskin kalsın
-    filter: grayscale(100%) contrast(200%);
-    mix-blend-mode: $recep-tuval-karisim;
-  }
-}
-
-// ince taneli eser (hero.lua: ince = true): tuval genişliğinde (859 px) üretildi →
-// masaüstünde 1:1, retinada 2×. Daha dar ekranda pikselli küçültme noktaları yutar: yumuşak ölçekle.
-@media (max-width: 1279.98px) {
-  .recep-dhero--ince .recep-dhero-tuval img { image-rendering: auto; }
-}
-// kenar çubuklu sayfalarda sütun 859 px'ten dar (≈809): orada da yumuşak ölçekle
-body.nav-sidebar .recep-dhero--ince .recep-dhero-tuval img { image-rendering: auto; }
-// sabit eser (hero.lua: sabit = true): tablo kırpılmadan 16:9'a yerleştirildi → alt sayfada da 16:9
-.recep-dhero.recep-dhero--sabit { --tuval-oran: 16 / 9; }
-// alt sayfa başlıkları uzun olabilir: satıra kırılan başlık levhası tuvalin çoğunu örtmesin
-.recep-dhero--orta .recep-dhero-baslik { max-width: 64%; }
-
-// Katman 1 — dev başlık, sol alt köşe, tuvalden aşağı taşar
+// Katman 1 — dev başlık
 .recep-dhero-baslik {
-  position: absolute; left: 0; bottom: 0; z-index: 1;
-  width: fit-content; max-width: 94%;
-  transform: translateY(calc(var(--baslik) * .42));
   font-family: var(--font-brutal); font-weight: 900;
   font-size: var(--baslik);
   line-height: .9; letter-spacing: $brutal-tracking;
   text-transform: lowercase; color: $recep-ink;
-  margin: 0; border: none;
+  margin: 0; padding: 0 0 .06em; border: none;   // alt uzantılar (p, j, y, ç) kesilmesin
   overflow-wrap: anywhere;
-  // levha tek blok: çok satırlı başlıkta satır zeminleri birbirinin harflerini örtmez
-  background: $recep-paper;
-  padding: .12em .16em 0 0;
 }
 
-.recep-dhero-alt-satir {
-  display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem;
-  margin-top: calc(var(--baslik) * .56 + 1.25rem);   // taşma + alt uzantılar (p, j, y)
-}
 // Katman 2 — açıklama
 .recep-dhero-alt {
   font-family: var(--font-editorial); font-style: italic;
   font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.6;
-  color: $recep-muted; max-width: 40rem; margin: 0;
-}
-// Katman 3 — künye
-.recep-dhero-kunye {
-  flex: none; margin: .35rem 0 0 auto; text-align: right;
-  font-family: var(--font-terminal); font-size: .62rem; letter-spacing: .06em;
-  color: $recep-muted;
-}
-@media (max-width: 767.98px) {
-  .recep-dhero-alt-satir { flex-direction: column; gap: .75rem; }
-  .recep-dhero-kunye { margin: 0; text-align: left; }
+  color: $recep-muted; max-width: 40rem; margin: clamp(1rem, 2.5vw, 1.75rem) 0 0;
 }
 
 // Katman 2 — uzun okuma metni (hakkımızda): Lora, geniş satır aralığı, paragraflar arası nefes

@@ -4,7 +4,6 @@ project:
     - "/.nojekyll"          # / = proje köküne sabit (EN derlemesi _site/ içindekileri kopyalamasın)
     - "/assets/fonts/"
     - "/assets/marka/"
-    - "/assets/sanat/"
     - "/assets/js/kure.js"
     - "/assets/katex/"      # matematik dizgisi: CDN yerine kendi sunucumuzdan (sürüm sabit, 0.16.22)
     - "/admin/"             # içerik paneli (Sveltia CMS) — derlenmez, olduğu gibi kopyalanır
@@ -19,7 +18,7 @@ profile:
     - [tr, en]
 
 filters:
-  - hero          # _extensions/recep/hero — ana sayfada küre, diğer sayfalarda 1-bit sanat tuvali + dev başlık
+  - hero          # _extensions/recep/hero — ana sayfada küre, diğer sayfalarda sade dev başlık
 
 execute:
   freeze: auto   # R çıktıları _freeze/ içine yazılır ve commit edilir; CI'da R gerekmez
