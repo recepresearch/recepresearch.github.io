@@ -39,6 +39,75 @@ slug:
   sanitize_replacement: "-"
 
 collections:
+  # ---------------------------------------------------------------- araştırmacılar
+  # data/ekip.yml → /arastirmacilar/ ve /en/researchers/ (tek liste, paneldeki sırayla)
+  - name: arastirmacilar
+    label: araştırmacılar
+    icon: group
+    files:
+      - name: ekip
+        label: araştırmacı listesi
+        file: data/ekip.yml
+        format: yaml
+        media_folder: /assets/ekip
+        public_folder: assets/ekip
+        fields:
+          - label: araştırmacılar
+            label_singular: araştırmacı
+            name: kisiler
+            widget: list
+            root: true
+            summary: "{{ad}}"
+            hint: "Sitede bu sırayla görünür; sürükleyerek sıralayın."
+            fields:
+              - label: ad soyad
+                name: ad
+                widget: string
+                hint: "Varsa akademik unvanla birlikte, ör. Prof. Dr. Ad Soyad"
+              - label: görev
+                name: unvan
+                widget: string
+                required: false
+                hint: "İsteğe bağlı, ör. kurucu ve yürütücü. Boş bırakılırsa yalnızca ad görünür."
+              - label: görev (english)
+                name: unvan_en
+                widget: string
+                required: false
+              - label: fotoğraf
+                name: foto
+                widget: image
+                required: false
+                hint: "Kare, yüz ortada (en az 240×240). Boş kalırsa baş harfler gösterilir."
+              - label: linkedin
+                name: linkedin
+                widget: string
+                required: false
+                pattern: ['^https://([a-z]+\.)?linkedin\.com/', 'linkedin.com ile başlayan tam adres girin.']
+              - label: avesis
+                name: avesis
+                widget: string
+                required: false
+                pattern: ["^https?://", "Tam adres girin (https://…)."]
+              - label: google scholar
+                name: scholar
+                widget: string
+                required: false
+                pattern: ["^https?://", "Tam adres girin (https://…)."]
+              - label: orcid
+                name: orcid
+                widget: string
+                required: false
+                hint: "ör. 0000-0001-2345-6789"
+              - label: kişisel web sitesi
+                name: web
+                widget: string
+                required: false
+                pattern: ["^https?://", "Tam adres girin (https://…)."]
+              - label: e-posta
+                name: eposta
+                widget: string
+                required: false
+
   # ---------------------------------------------------------------- Türkçe
   - name: kayitlar
     label: konferans, çalıştay ve duyurular

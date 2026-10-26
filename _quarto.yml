@@ -5,6 +5,7 @@ project:
     - "/assets/fonts/"
     - "/assets/marka/"
     - "/assets/js/kure.js"
+    - "/assets/ekip/"       # araştırmacı fotoğrafları (şablon ham HTML yazdığı için Quarto kendisi bulamaz)
     - "/assets/katex/"      # matematik dizgisi: CDN yerine kendi sunucumuzdan (sürüm sabit, 0.16.22)
     - "/admin/"             # içerik paneli (Sveltia CMS) — derlenmez, olduğu gibi kopyalanır
 

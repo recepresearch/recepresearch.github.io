@@ -1,46 +1,33 @@
 ```{=html}
 <%
-// dil: listing'in template-params: { dil: en } alanından (varsayılan tr)
-const en = typeof templateParams !== "undefined" && templateParams && templateParams.dil === "en";
+// Araştırmacılar: tek liste, data/ekip.yml'deki sırayla (içerik panelinden düzenlenir: /admin/ → araştırmacılar).
+// Kart: fotoğraf, ad, varsa unvan; altında bağlantılar.
+// template-params: dil (tr | en) · onek: sayfadan site köküne göreli yol (foto yolları "assets/…" biçiminde saklanır)
+const p = (typeof templateParams !== "undefined" && templateParams) || {};
+const en = p.dil === "en";
+const onek = p.onek || "../";
 const bekliyor = en ? "content in preparation." : "içerik hazırlanıyor.";
-const gruplar = en ? [
-  ["yurutucu", "principal investigator", ""],
-  ["arastirmaci", "researchers", ""],
-  ["danisman", "advisors", ""],
-  ["bursiyer", "research fellows", ""]
-] : [
-  ["yurutucu", "yürütücü", ""],
-  ["arastirmaci", "araştırmacılar", ""],
-  ["danisman", "danışmanlar", ""],
-  ["bursiyer", "bursiyerler", ""]
+const basHarf = (ad) => ad.replace(/(Prof\.|Doç\.|Dr\.|Öğr\.|Üyesi|Araş\.|Arş\.|Gör\.)/g, "").trim().split(/\s+/).map(s => s[0]).slice(0, 2).join("");
+const fotoYolu = (f) => /^(https?:)?\//.test(f) ? f : onek + f;
+const baglantilar = [
+  ["linkedin", "LinkedIn"], ["avesis", "AVESİS"], ["scholar", "Google Scholar"], ["orcid", "ORCID"], ["web", "web"]
 ];
-const basHarf = (ad) => ad.replace(/(Prof\.|Doç\.|Dr\.|Araş\.|Arş\.|Gör\.)/g, "").trim().split(/\s+/).map(s => s[0]).slice(0, 2).join("");
-const sirali = [...items].sort((a, b) => (a.sira ?? 99) - (b.sira ?? 99));
 %>
-<% for (const [rol, baslik, bosMesaj] of gruplar) { const uyeler = sirali.filter(i => i.rol === rol); %>
-<section class="recep-people-group">
-<h2 class="anchored" id="<%- rol %>"><%= baslik %></h2>
-<% if (!uyeler.length) { %><div class="recep-bekliyor"><%= bekliyor %></div><% continue; } %>
+<% if (!items.length) { %><div class="recep-bekliyor"><%= bekliyor %></div><% } else { %>
 <div class="recep-people">
-<% for (const k of uyeler) { %>
+<% for (const k of items) { const unvan = (en && k.unvan_en) || k.unvan; %>
 <article class="recep-person">
-<% if (k.foto) { %><img class="recep-avatar" src="<%- k.foto %>" alt="<%= k.ad %>" loading="lazy" width="64" height="64"><% } else { %><div class="recep-avatar" aria-hidden="true"><%= basHarf(k.ad) %></div><% } %>
-<div class="recep-person-body">
+<% if (k.foto) { %><img class="recep-avatar" src="<%- fotoYolu(k.foto) %>" alt="<%= k.ad %>" loading="lazy" width="120" height="120"><% } else { %><div class="recep-avatar" aria-hidden="true"><%= basHarf(k.ad) %></div><% } %>
 <div class="recep-person-name"><%= k.ad %></div>
-<% const unvan = (en && k.unvan_en) || k.unvan, kurum = (en && k.kurum_en) || k.kurum, alan = (en && k.alan_en) || k.alan; %>
-<div class="recep-person-role"><%= unvan %><% if (kurum) { %> · <%= kurum %><% } %></div>
-<% if (alan) { %><div class="recep-person-area"><%= alan %></div><% } %>
+<% if (unvan) { %><div class="recep-person-role"><%= unvan %></div><% } %>
 <div class="recep-person-links">
-<% if (k.eposta) { %><a href="mailto:<%- k.eposta %>" aria-label="<%= en ? "E-mail" : "E-posta" %>"><i class="bi bi-envelope"></i></a><% } %>
-<% if (k.web) { %><a href="<%- k.web %>" aria-label="Web"><i class="bi bi-globe2"></i></a><% } %>
-<% if (k.scholar) { %><a href="<%- k.scholar %>" aria-label="Google Scholar"><i class="bi bi-mortarboard"></i></a><% } %>
-<% if (k.github) { %><a href="https://github.com/<%- k.github %>" aria-label="GitHub"><i class="bi bi-github"></i></a><% } %>
-<% if (k.orcid) { %><a href="https://orcid.org/<%- k.orcid %>" class="recep-tag">orcid</a><% } %>
-</div>
+<% for (const [alan, etiket] of baglantilar) { if (!k[alan]) continue; const href = alan === "orcid" && !/^https?:/.test(k[alan]) ? "https://orcid.org/" + k[alan] : k[alan]; %>
+<a href="<%- href %>" aria-label="<%= k.ad %> · <%= etiket %>"><%= etiket %></a>
+<% } %>
+<% if (k.eposta) { %><a href="mailto:<%- k.eposta %>" aria-label="<%= k.ad %> · <%= en ? "e-mail" : "e-posta" %>"><%= en ? "e-mail" : "e-posta" %></a><% } %>
 </div>
 </article>
 <% } %>
 </div>
-</section>
 <% } %>
 ```

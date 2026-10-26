@@ -1,15 +1,14 @@
 ---
 title: "researchers"
 html-math-method: plain   # liste sayfası, matematik yok: KaTeX (270 KB) yüklenmesin
-description: "Principal investigator, researchers, advisors, research fellows."
 toc: false
-hero-meta: '\> DIR_ATHENS.exe // RESEARCH_SYNDICATE_NODE'
 listing:
   id: ekip
   contents: ../data/ekip.yml
   template: ../_templates/ekip.ejs
   template-params:
     dil: en
+    onek: "../../"         # _site/en/researchers/ → site kökü
 aliases:
   - /team/index.html
 ---

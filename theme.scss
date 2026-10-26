@@ -517,30 +517,29 @@ h2.recep-liste-baslik + div .listing-no-matching {
 // liste kartı tarihi ve önceki/sonraki sayfa bağlantısı: Bootstrap'ın varsayılan grisi (#6c757d) gece zemininde yetersiz kontrast veriyordu
 .quarto-grid-item .listing-date, .page-navigation .nav-page-text { color: $recep-muted; }
 
-// ============ ekip ============
-.recep-people-group h2 { text-align: left; }
+// ============ araştırmacılar (v7): tek liste; fotoğraf, ad, unvan, bağlantılar ============
 .recep-people {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  column-gap: 2rem;
-  margin: 1rem 0 2.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  margin: .5rem 0 4rem;
 }
-.recep-person {
-  display: flex; gap: 1.1rem; align-items: flex-start;
-  padding: 1.25rem 0; border-top: 1px solid $recep-line;
-}
+.recep-person { display: flex; flex-direction: column; align-items: flex-start; }
 .recep-avatar {
-  flex: 0 0 64px; width: 64px; height: 64px; object-fit: cover;
+  width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
   display: grid; place-items: center;
-  background: $recep-surface; filter: grayscale(100%);
-  font-family: var(--font-terminal); font-size: .95rem; color: $recep-muted;
+  background: $recep-surface; margin-bottom: 1.1rem;
+  font-family: var(--font-brutal); font-weight: 600; font-size: 1.6rem; letter-spacing: -.02em; color: $recep-muted;
+  text-transform: none;
 }
-.recep-person-name { font-family: var(--font-editorial); font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
-.recep-person-role { font-family: var(--font-terminal); font-size: .68rem; letter-spacing: .06em; color: $recep-muted; text-transform: lowercase; margin-top: .25rem; }
-.recep-person-area { font-size: .95rem; color: $recep-muted; margin-top: .4rem; }
+// genel kural (*: border-radius 0) yalnızca araştırmacı fotoğraflarında esnetilir: yuvarlak portre
+.recep-people .recep-avatar { border-radius: 50% !important; }
+.recep-person-name { font-family: var(--font-brutal); font-weight: 600; font-size: 1.1rem; line-height: 1.3; letter-spacing: -.01em; }
+.recep-person-role { font-family: var(--font-brutal); font-size: .9rem; color: $recep-muted; margin-top: .2rem; }
 .recep-person-links {
-  display: flex; gap: .75rem; align-items: center; margin-top: .5rem;
-  a { color: $recep-muted; &:hover { color: $recep-ink; text-decoration: none; } }
+  display: flex; flex-wrap: wrap; gap: .35rem 1rem; margin-top: .75rem;
+  font-family: var(--font-brutal); font-size: .82rem;
+  a { color: $recep-blue; &:hover { color: $recep-ink; text-decoration: none; } }
 }
 
 // ============ çıktılar ============
