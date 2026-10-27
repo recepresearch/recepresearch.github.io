@@ -88,6 +88,8 @@ $input-group-addon-bg: $recep-surface !default;
 // ============ temel ============
 
 :root {
+  // tarayıcının kendi denetimleri (kaydırma çubuğu, form alanı) temaya uysun
+  color-scheme: #{if(lightness($recep-paper) < 50%, dark, light)};
   --font-brutal:    #{$font-brutal};
   --font-editorial: #{$font-editorial};
   --font-terminal:  #{$font-terminal};
@@ -100,6 +102,7 @@ $input-group-addon-bg: $recep-surface !default;
 }
 
 body {
+  -webkit-tap-highlight-color: rgba($recep-green, .15);
   font-family: var(--font-brutal);
   line-height: 1.65;
   letter-spacing: -0.006em;
@@ -116,6 +119,8 @@ code, pre, kbd { font-family: var(--font-mono); }
 
 // başlıklar: Inter 600; kaynakta nasıl yazıldıysa öyle (özel adlar, kısaltmalar bozulmasın)
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  text-wrap: balance;                      // son satırda tek kelime kalmasın
+  scroll-margin-top: 88px;                 // sabit menünün (68px) altında kalmasın
   font-family: var(--font-brutal);
   font-weight: 600;
   letter-spacing: -0.022em;
@@ -130,6 +135,16 @@ h4, h5, h6 { font-size: 1.05rem; letter-spacing: -0.01em; }
 }
 
 a { transition: color .15s ease; }
+a, button, .btn, [role="button"], summary { touch-action: manipulation; }   // dokunmatikte çift dokunma gecikmesi yok
+
+// içeriğe geç (klavye ve ekran okuyucu): yalnızca odaklanınca görünür
+.recep-atla {
+  position: fixed; left: 1rem; top: .75rem; z-index: 10001;
+  padding: .55rem 1rem; border-radius: 50rem;
+  background: $recep-green; color: $recep-on-green !important; font-weight: 500; font-size: .9rem;
+  transform: translateY(-200%); transition: transform .2s ease;
+  &:focus, &:focus-visible { transform: none; outline-offset: 2px; }
+}
 main a:not(.nav-link):not(.btn):not(.recep-btns a):hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 
 code, pre, kbd { font-size: .82em; }
@@ -306,6 +321,7 @@ blockquote { border-left: 3px solid $recep-green; padding-left: 1.25rem; color: 
   &:focus-visible { outline: 2px solid $recep-green; outline-offset: 6px; border-radius: 50%; }
 }
 .recep-khero-baslik {
+  text-wrap: balance;
   font-family: var(--font-brutal); font-weight: 900;
   font-size: clamp(3.4rem, 9vw, 7.5rem);
   line-height: .86; letter-spacing: $brutal-tracking;
@@ -329,6 +345,7 @@ body:has(.recep-dhero) #title-block-header { display: none; }
 .recep-dhero--orta { --baslik: clamp(2.25rem, 5vw, 3.4rem); }
 
 .recep-dhero-baslik {
+  text-wrap: balance;
   font-family: var(--font-brutal); font-weight: 700;
   font-size: var(--baslik);
   line-height: 1.04; letter-spacing: $brutal-tracking;

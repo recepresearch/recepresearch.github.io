@@ -55,7 +55,7 @@ format:
     css: assets/fonts.css
     include-in-header:
       text: |
-        <meta name="theme-color" content="#F4F2EC">
+        <meta name="theme-color" content="#FBFBFD">
         <script>
           // Ana mod açık (v7); gece teması yalnızca oturumluk bir seçenek.
           // Quarto tema seçimini localStorage'a kalıcı yazar: her yeni tarayıcı oturumunun
@@ -111,6 +111,25 @@ format:
           })();
           // erişilebilirlik: Quarto'nun ürettiği işaretlemede görünümü değiştirmeyen düzeltmeler
           (function () {
+            var en = (document.documentElement.lang || "").slice(0, 2) === "en";
+            // içeriğe geç bağlantısı (sayfanın ilk odaklanılabilir öğesi)
+            var ana = document.querySelector("main");
+            if (ana) {
+              if (!ana.id) ana.id = "icerik";
+              var atla = document.createElement("a");
+              atla.className = "recep-atla"; atla.href = "#" + ana.id;
+              atla.textContent = en ? "Skip to content" : "İçeriğe geç";
+              document.body.insertBefore(atla, document.body.firstChild);
+            }
+            // marka adı otomatik çeviride bozulmasın
+            document.querySelectorAll(".navbar-title, .recep-khero-baslik").forEach(function (e) { e.translate = false; });
+            // tarayıcı çubuğu rengi (theme-color) seçili temanın zeminini izlesin
+            var tc = document.querySelector('meta[name="theme-color"]');
+            var renkGuncelle = function () {
+              if (tc) tc.content = getComputedStyle(document.body).backgroundColor || tc.content;
+            };
+            renkGuncelle();
+            new MutationObserver(renkGuncelle).observe(document.body, { attributes: true, attributeFilter: ["class"] });
             // menü düğmesi bir menü değil, açılır paneli kontrol eden düğme
             var t = document.querySelector(".navbar-toggler[role='menu']");
             if (t) t.removeAttribute("role");
