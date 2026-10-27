@@ -1,5 +1,8 @@
 project:
   type: website
+  # hız: gece teması stilleri ancak seçilince insin (bkz. dosyanın açıklaması)
+  post-render:
+    - _araclar/gece-temasi-ertele.py
   resources:
     - "/.nojekyll"          # / = proje köküne sabit (EN derlemesi _site/ içindekileri kopyalamasın)
     - "/assets/fonts/"
@@ -155,11 +158,16 @@ format:
         </script>
     toc: true
     toc-depth: 3
-    smooth-scroll: true
+    # hız (v7 adım 5): kullanılmayan özellikler kapalı → zenscroll, clipboard, tippy/popper yüklenmez.
+    # Yumuşak kaydırmayı tarayıcı yapar (theme.scss: scroll-behavior).
+    smooth-scroll: false
     anchor-sections: true
-    code-copy: true
+    code-copy: false
     code-overflow: wrap
-    code-link: true
+    code-link: false
+    footnotes-hover: false
+    citations-hover: false
+    crossrefs-hover: false
     highlight-style:
       light: github
       dark: github-dark

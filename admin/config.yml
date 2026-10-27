@@ -32,6 +32,18 @@ logo_url: https://recepresearch.org/assets/favicon.svg
 media_folder: assets/yuklemeler
 public_folder: /assets/yuklemeler
 
+# Yüklenen fotoğraflar tarayıcıda küçültülür: WebP, en fazla 1600 px genişlik (site hızı için)
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1600
+
 # Türkçe karakterler adreste sadeleşir: "Çalıştay Duyurusu" → "calistay-duyurusu"
 slug:
   encoding: ascii

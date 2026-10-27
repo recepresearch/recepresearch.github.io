@@ -8,7 +8,7 @@
                     tabloları kaldırıldı — eski hali `yedek-2026-10-25` sürümünde.)
 
   Front matter ile ayar (hepsi isteğe bağlı):
-    title          → başlık            description → alt satır (Lora)
+    title          → başlık            description → alt satır
     hero: false    → bu sayfada kapat
     hero-baslik    → başlığı ez        hero-boyut: buyuk | orta (başlık boyu)
 
@@ -274,6 +274,12 @@ function Pandoc(doc)
   local dil = yazi(m["lang"]) or "tr"
   local sekme, dosya, derinlik, parcalar = konum()
   ceviriBaglantisi(dil, parcalar, derinlik)
+  -- hız: metin yazı tipi (Inter) CSS'i beklemeden inmeye başlasın (Türkçe için latin + latin-ext)
+  local onek = derinlik == 0 and "" or string.rep("../", derinlik)
+  quarto.doc.include_text("in-header", string.format(
+    '<link rel="preload" href="%sassets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>\n' ..
+    '<link rel="preload" href="%sassets/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>',
+    onek, onek))
   if sekme == "ana" then kurumBilgisi(dil) end
   if m["hero"] == false or yazi(m["hero"]) == "false" then return doc end
   if dosya == "index.en" then dosya = "index" end

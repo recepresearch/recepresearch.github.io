@@ -135,6 +135,7 @@ h4, h5, h6 { font-size: 1.05rem; letter-spacing: -0.01em; }
 }
 
 a { transition: color .15s ease; }
+html { scroll-behavior: smooth; }   // sayfa içi bağlantılar (Quarto smooth-scroll kapalı, kütüphane yok)
 a, button, .btn, [role="button"], summary { touch-action: manipulation; }   // dokunmatikte çift dokunma gecikmesi yok
 
 // içeriğe geç (klavye ve ekran okuyucu): yalnızca odaklanınca görünür
@@ -602,4 +603,5 @@ form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^=
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
   @view-transition { navigation: none; }
+  html { scroll-behavior: auto; }
 }
