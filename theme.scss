@@ -479,7 +479,7 @@ table.table { font-size: .95rem; }
 // boş liste: Quarto "kayıt yok" metnini d-none ile gizler; listede hiç kart yokken göster
 h2.recep-liste-baslik + .quarto-listing:not(:has(.g-col-1)) .listing-no-matching { display: block !important; }
 h2.recep-liste-baslik + div .listing-no-matching {
-  font-size: 1rem; color: $recep-muted; margin: .25rem 0 1rem; text-align: left;
+  font-size: 1rem; color: $recep-muted; margin: .25rem 0 1rem; padding: 0; text-align: left;
 }
 // boş listede ızgara kabı yer kaplamasın
 h2.recep-liste-baslik + .quarto-listing:not(:has(.g-col-1)) .list { display: none; }
@@ -499,7 +499,13 @@ h2.recep-liste-baslik { margin-top: 3.5rem; margin-bottom: 1rem; }
   gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
   margin: .5rem 0 4rem;
 }
-.recep-person { display: flex; flex-direction: column; align-items: flex-start; }
+.recep-person { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+// telefon: iki sütun, daha küçük portre
+@media (max-width: 575.98px) {
+  .recep-people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.25rem; }
+  .recep-people .recep-avatar { width: 88px; height: 88px; font-size: 1.25rem; margin-bottom: .8rem; }
+  .recep-person-name { font-size: 1rem; }
+}
 .recep-avatar {
   width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
   display: grid; place-items: center;
