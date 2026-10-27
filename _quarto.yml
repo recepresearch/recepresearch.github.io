@@ -1,8 +1,8 @@
 project:
   type: website
-  # hız: gece teması stilleri ancak seçilince insin (bkz. dosyanın açıklaması)
+  # derleme sonrası düzeltmeler: gece teması stili istek üzerine, boş listelerde list.js kurulmaz
   post-render:
-    - _araclar/gece-temasi-ertele.py
+    - _araclar/derleme-sonrasi.py
   resources:
     - "/.nojekyll"          # / = proje köküne sabit (EN derlemesi _site/ içindekileri kopyalamasın)
     - "/assets/fonts/"
