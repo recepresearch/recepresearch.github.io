@@ -553,6 +553,19 @@ form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^=
 // ============ footer ============
 .nav-footer { border-top: 1px solid $recep-line !important; font-size: .78rem; color: $recep-muted; }
 
+// ============ sayfa geçişi (v7 adım 4) ============
+// Tarayıcının kendi sayfalar arası geçişi (View Transitions, kütüphane yok): menü yerinde kalır,
+// eski sayfa kısa sürede söner, yeni sayfa hafifçe yukarı kayarak belirir. Kullanıcının tıklamasına
+// verilen yanıt olduğu için tek hareket bu. Desteklemeyen tarayıcıda (ör. Firefox) normal geçiş.
+@view-transition { navigation: auto; }
+#quarto-header { view-transition-name: recep-ust; }
+::view-transition-old(root) { animation: 140ms cubic-bezier(.4, 0, 1, 1) both recep-son; }
+::view-transition-new(root) { animation: 280ms cubic-bezier(0, 0, .2, 1) 60ms both recep-bel; }
+::view-transition-group(recep-ust) { animation: none; }
+@keyframes recep-son { to { opacity: 0; } }
+@keyframes recep-bel { from { opacity: 0; transform: translateY(10px); } }
+
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
+  @view-transition { navigation: none; }
 }
