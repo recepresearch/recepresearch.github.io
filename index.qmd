@@ -7,90 +7,25 @@ page-layout: full
 toc: false
 page-navigation: false
 repo-actions: false
+html-math-method: plain   # matematik yok: KaTeX yüklenmesin
+# Ana sayfa (v7): küre + grup adı; altında panelden girilen en son 3 kayıt (konferans, çalıştay, duyuru).
+# Bölümlere menüden gidilir; eski düğmeler ve 8 kartlık "bölümler" ızgarası kaldırıldı.
+listing:
+  id: son-kayitlar
+  contents: konferans-calistay/posts
+  type: grid
+  grid-columns: 3
+  sort: "date desc"
+  max-items: 3
+  fields: [image, date, title, description]
+date-format: "D MMMM YYYY"
 ---
 
-::: {.recep-btns}
-[hakkımızda](hakkimizda/index.qmd){.birincil}
-[projeler](projeler/index.qmd)
-[araçlar](araclar/index.qmd)
+::: {.recep-son}
+## son kayıtlar {.no-prefix .unnumbered}
+
+[tümü](konferans-calistay/index.qmd){.recep-son-tumu}
+
+::: {#son-kayitlar}
 :::
-
-## bölümler {.no-prefix}
-
-:::: {.recep-grid .dort}
-
-::: {.recep-card}
-[/hakkimizda]{.recep-index}
-
-### [hakkımızda](hakkimizda/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- araştırma grubu
-- yıldız teknik üniversitesi
 :::
-
-::: {.recep-card}
-[/projeler]{.recep-index}
-
-### [projeler](projeler/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- güncel projeler
-- geçmiş projeler
-- tübitak 1001 · adep · cetp intact
-:::
-
-::: {.recep-card}
-[/arastirmacilar]{.recep-index}
-
-### [araştırmacılar](arastirmacilar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-:::
-
-::: {.recep-card}
-[/ciktilar]{.recep-index}
-
-### [çıktılar](ciktilar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- politika notları
-- çalışma tebliğleri ve makaleler
-- sunumlar ve çalıştay materyalleri
-:::
-
-::: {.recep-card}
-[/araclar]{.recep-index}
-
-### [araçlar](araclar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- skdm maliyet hesaplayıcısı
-- karbon fiyatı paneli
-:::
-
-::: {.recep-card}
-[/veri-kod]{.recep-index}
-
-### [veri ve kod](veri-kod/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- uyumlaştırma anahtarları (NACE–ISCO–GTİP)
-- anonimleştirilmiş veri setleri
-- analiz kodları
-:::
-
-::: {.recep-card}
-[/konferans-calistay]{.recep-index}
-
-### [konferans ve çalıştaylar](konferans-calistay/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- konferanslar
-- çalıştaylar
-- duyurular
-:::
-
-::: {.recep-card}
-[/iletisim]{.recep-index}
-
-### [iletişim](iletisim/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- e-posta
-- adres
-- sosyal medya bağlantıları
-:::
-
-::::

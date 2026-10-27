@@ -8,90 +8,26 @@ page-layout: full
 toc: false
 page-navigation: false
 repo-actions: false
+html-math-method: plain   # no math: don't load KaTeX
+# Home (v7): globe + group name; below it the latest 3 entries from the content panel.
+# Sections are reached from the menu; the old buttons and 8-card "sections" grid were removed.
+# The block hides itself while there are no English entries.
+listing:
+  id: son-kayitlar
+  contents: conferences-workshops/posts
+  type: grid
+  grid-columns: 3
+  sort: "date desc"
+  max-items: 3
+  fields: [image, date, title, description]
+date-format: "D MMMM YYYY"
 ---
 
-::: {.recep-btns}
-[about](about/index.qmd){.birincil}
-[projects](projects/index.qmd)
-[tools](tools/index.qmd)
+::: {.recep-son}
+## latest {.no-prefix .unnumbered}
+
+[all](conferences-workshops/index.qmd){.recep-son-tumu}
+
+::: {#son-kayitlar}
 :::
-
-## sections {.no-prefix}
-
-:::: {.recep-grid .dort}
-
-::: {.recep-card}
-[/about]{.recep-index}
-
-### [about](about/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- research group
-- yıldız technical university
 :::
-
-::: {.recep-card}
-[/projects]{.recep-index}
-
-### [projects](projects/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- current projects
-- past projects
-- tübitak 1001 · adep · cetp intact
-:::
-
-::: {.recep-card}
-[/researchers]{.recep-index}
-
-### [researchers](researchers/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-:::
-
-::: {.recep-card}
-[/outputs]{.recep-index}
-
-### [outputs](outputs/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- policy briefs
-- working papers and articles
-- presentations and workshop materials
-:::
-
-::: {.recep-card}
-[/tools]{.recep-index}
-
-### [tools](tools/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- cbam cost calculator
-- carbon price dashboard
-:::
-
-::: {.recep-card}
-[/data-code]{.recep-index}
-
-### [data & code](data-code/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- concordance keys (NACE–ISCO–HS)
-- anonymised datasets
-- analysis code
-:::
-
-::: {.recep-card}
-[/conferences-workshops]{.recep-index}
-
-### [conferences & workshops](conferences-workshops/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- conferences
-- workshops
-- announcements
-:::
-
-::: {.recep-card}
-[/contact]{.recep-index}
-
-### [contact](contact/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- e-mail
-- address
-- social media links
-:::
-
-::::

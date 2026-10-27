@@ -333,6 +333,18 @@ blockquote { border-left: 3px solid $recep-green; padding-left: 1.25rem; color: 
   color: $recep-muted; max-width: 42rem; margin: 1.1rem auto 0; text-wrap: balance;
 }
 
+// ana sayfa: küre altında en son kayıtlar (index.qmd listing #son-kayitlar)
+.recep-son {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; column-gap: 1rem;
+  max-width: 980px; margin: 0 auto clamp(4rem, 8vw, 6rem); padding: 0 1rem;
+  > h2 { margin: 0 0 1.5rem; }
+  > p { margin: 0; }
+  > .quarto-listing, > div:last-child { grid-column: 1 / -1; }
+}
+.recep-son-tumu { font-weight: 500; }
+// kayıt yokken (ör. İngilizce sayfa) bölüm hiç görünmesin
+.recep-son:not(:has(.g-col-1)) { display: none; }
+
 // ============ alt sayfalar: sade başlık (_extensions/recep/hero) ============
 // Görsel yok: büyük başlık ve kısa açıklama; üstte ve altta bol boşluk.
 body:has(.recep-dhero) #title-block-header { display: none; }
