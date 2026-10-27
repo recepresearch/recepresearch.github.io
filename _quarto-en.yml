@@ -66,11 +66,11 @@ website:
 
   page-footer:
     border: true
-    left: "© 2026 recep · environment, clean energy and economic policies research group · yıldız technical university"
+    # v7: two quiet blocks — name, group and university on the left; contact (+ language link added by _quarto.yml script) on the right
+    left: '<span class="recep-alt-ad">© 2026 RECEP</span><span class="recep-alt-satir">Environment, Clean Energy and Economic Policies Research Group</span><span class="recep-alt-satir">Yıldız Technical University</span>'
     right:
-      - icon: envelope
+      - text: "contact"
         href: contact/index.qmd
-        aria-label: Contact
 
 format:
   html:

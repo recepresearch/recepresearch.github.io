@@ -569,7 +569,23 @@ form[class^="oi-"] select, form[class^="oi-"] input[type="number"], form[class^=
 }
 
 // ============ footer ============
-.nav-footer { border-top: 1px solid $recep-line !important; font-size: .78rem; color: $recep-muted; }
+.nav-footer {
+  border-top: 1px solid $recep-line !important; font-size: .82rem; color: $recep-muted;
+  padding: 1.75rem clamp(1rem, 4vw, 2.5rem) 2rem; align-items: flex-start; min-height: 0;
+  .nav-footer-left, .nav-footer-left p { display: flex; flex-direction: column; gap: .15rem; text-align: left; }
+  .nav-footer-right { justify-content: flex-end; }
+  .nav-footer-right .footer-items { gap: 1.25rem; align-items: center; }
+  p { margin: 0; }
+  // Quarto alt bilgi yazılarına ayrı boyutlar veriyor: sol ve sağ aynı ölçüde olsun
+  .nav-footer-left, .nav-footer-left p, .nav-footer-right .nav-link, .nav-footer-right .nav-link p { font-size: .82rem !important; line-height: 1.5; }
+  .nav-link { padding: 0 !important; color: $recep-muted; }
+  .nav-link:hover { color: $recep-ink; }
+}
+.recep-alt-ad { color: $recep-ink; font-weight: 600; }
+@media (max-width: 767.98px) {
+  .nav-footer { flex-direction: column; gap: 1rem; }
+  .nav-footer .nav-footer-right { justify-content: flex-start; }
+}
 
 // ============ sayfa geçişi (v7 adım 4) ============
 // Tarayıcının kendi sayfalar arası geçişi (View Transitions, kütüphane yok): menü yerinde kalır,

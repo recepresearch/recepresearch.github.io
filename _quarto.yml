@@ -108,6 +108,16 @@ format:
             // dar ekranda logo ile ikonlar arasında yer yok: bir kopyası açılır menünün en altında
             var menu = document.querySelector(".navbar .navbar-collapse");
             if (menu) { var k = d.cloneNode(true); k.classList.add("recep-dil--menu"); menu.appendChild(k); }
+            // alt bilgi: karşı dildeki eşe sade bir bağlantı
+            var altSag = document.querySelector(".nav-footer-right .footer-items");
+            if (altSag) {
+              var ab = document.createElement("a");
+              ab.className = "nav-link"; ab.href = karsi;
+              ab.lang = dil === "en" ? "tr" : "en"; ab.hreflang = ab.lang;
+              ab.textContent = dil === "en" ? "Türkçe" : "English";
+              var li = document.createElement("li"); li.className = "nav-item"; li.appendChild(ab);
+              altSag.appendChild(li);
+            }
           })();
           // erişilebilirlik: Quarto'nun ürettiği işaretlemede görünümü değiştirmeyen düzeltmeler
           (function () {

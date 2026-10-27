@@ -64,11 +64,11 @@ website:
 
   page-footer:
     border: true
-    left: "© 2026 recep · çevre, temiz enerji ve ekonomi politikaları araştırma grubu · yıldız teknik üniversitesi"
+    # v7: iki sakin blok — solda ad, grup ve üniversite; sağda iletişim (+ dil bağlantısı, _quarto.yml betiği ekler)
+    left: '<span class="recep-alt-ad">© 2026 RECEP</span><span class="recep-alt-satir">Çevre, Temiz Enerji ve Ekonomi Politikaları Araştırma Grubu</span><span class="recep-alt-satir">Yıldız Teknik Üniversitesi</span>'
     right:
-      - icon: envelope
+      - text: "iletişim"
         href: iletisim/index.qmd
-        aria-label: İletişim
 
 format:
   html:
