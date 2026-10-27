@@ -42,11 +42,6 @@ repo-actions: false
 [/arastirmacilar]{.recep-index}
 
 ### [araştırmacılar](arastirmacilar/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- yürütücü
-- araştırmacılar
-- danışmanlar
-- bursiyerler
 :::
 
 ::: {.recep-card}

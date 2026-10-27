@@ -3,10 +3,6 @@ title: "karbon fiyatı paneli"
 order: 2
 ---
 
-::: {.recep-durum}
-\> STATUS: İÇERİK HAZIRLANIYOR\.\.\.
-
-// MODULE_IN_DEVELOPMENT
-
-[VERİ_SETİ_ENTEGRASYONU_BEKLENİYOR]
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
 :::

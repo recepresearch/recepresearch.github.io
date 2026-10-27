@@ -13,12 +13,8 @@ toc: false
 
 ### [cbam cost calculator](cbam-calculator.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-::: {.recep-durum}
-\> STATUS: CONTENT IN PREPARATION\.\.\.
-
-// MODULE_IN_DEVELOPMENT
-
-[AWAITING_DATASET_INTEGRATION]
+::: {.recep-bekliyor}
+content in preparation.
 :::
 :::
 
@@ -27,12 +23,8 @@ toc: false
 
 ### [carbon price dashboard](carbon-price.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-::: {.recep-durum}
-\> STATUS: CONTENT IN PREPARATION\.\.\.
-
-// MODULE_IN_DEVELOPMENT
-
-[AWAITING_DATASET_INTEGRATION]
+::: {.recep-bekliyor}
+content in preparation.
 :::
 :::
 

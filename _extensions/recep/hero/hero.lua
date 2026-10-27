@@ -3,16 +3,14 @@
 
   Her HTML sayfasının en üstüne otomatik bir başlık alanı ekler:
     · ana sayfa   → KÜRE HERO: ortada dönen wireframe dünya (assets/js/kure.js),
-                    altında "recep" (Inter 900), grup adı (Lora), koordinat (Space Mono)
-    · diğer sayfalar → SADE BAŞLIK: üstte yol satırı (Space Mono), dev başlık (Inter 900),
-                    altında açıklama (Lora). Görsel yok; açık ve ferah. (2026-10-25: 1-bit Rönesans
+                    altında "recep" (Inter 900) ve grup adı
+    · diğer sayfalar → SADE BAŞLIK: büyük başlık (Inter 700), altında kısa açıklama. Görsel yok; açık ve ferah. (2026-10-25: 1-bit Rönesans
                     tabloları kaldırıldı — eski hali `yedek-2026-10-25` sürümünde.)
 
   Front matter ile ayar (hepsi isteğe bağlı):
     title          → başlık            description → alt satır (Lora)
     hero: false    → bu sayfada kapat
     hero-baslik    → başlığı ez        hero-boyut: buyuk | orta (başlık boyu)
-    hero-meta      → başlığın üstündeki yol satırını ez (Space Mono, neon; varsayılan: /yol)
 
   Çift dil (_quarto-tr.yml / _quarto-en.yml): dil front matter'daki `lang` alanından okunur.
   Her sayfaya karşı dildeki eşinin adresi yazılır (<meta name="recep-ceviri"> + hreflang);
@@ -88,7 +86,6 @@ local function kureHero(baslik, alt)
   <div class="recep-kure recep-khero-kure" data-hiz="0.006" role="presentation"></div>
   <h1 id="recep-khero-baslik" class="recep-khero-baslik">%s</h1>
   %s
-  <p class="recep-khero-koord">lat 41.01 · lon 28.98 · <b>●</b> istanbul</p>
 </section>]],
     kacis(baslik),
     alt and ('<p class="recep-khero-alt">' .. kacis(alt) .. '</p>') or "")
@@ -290,21 +287,16 @@ function Pandoc(doc)
 
   local boyut = yazi(m["hero-boyut"])
   if boyut ~= "buyuk" and boyut ~= "orta" then
-    boyut = (dosya == "index") and "buyuk" or "orta"
+    boyut = (dosya == "index" and derinlik <= 1) and "buyuk" or "orta"   -- bölüm sayfası büyük; alt sayfa ve kayıtlar orta
   end
 
-  -- yol: /arastirmacilar · /projeler/skdm/yontem
-  local klasor = derinlik > 0 and ("/" .. table.concat(parcalar, "/", 1, #parcalar - 1)) or ""
-  local yol = (dosya == "index") and (klasor ~= "" and klasor or "/") or (klasor .. "/" .. dosya)
-  local etiket = yazi(m["hero-meta"])
 
   local html = string.format([[
 <section class="recep-dhero recep-dhero--%s" aria-labelledby="recep-dhero-baslik">
-  <div class="recep-dhero-meta%s"><span>%s</span></div>
   <h1 id="recep-dhero-baslik" class="recep-dhero-baslik">%s</h1>
   %s
 </section>]],
-    boyut, etiket and " recep-dhero-meta--etiket" or "", kacis(etiket or yol), kacis(baslik),
+    boyut, kacis(baslik),
     alt and ('<p class="recep-dhero-alt">' .. kacis(alt) .. '</p>') or "")
 
   table.insert(doc.blocks, 1, pandoc.RawBlock("html", html))

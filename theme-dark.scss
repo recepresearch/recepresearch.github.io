@@ -1,12 +1,11 @@
 /*-- scss:defaults --*/
-// Gece teması (varsayılan). Yalnızca palet; kurallar theme.scss'ten gelir.
-$recep-ink:      #ECEAE4 !default;
-$recep-paper:    #05080D !default;
-$recep-muted:    #8E918F !default;
-$recep-line:     rgba(236, 234, 228, .12) !default;
-$recep-surface:  #0D1219 !default;
-$recep-green:    #39FF14 !default;
-$recep-blue:     #7FC8F8 !default;   // bağlantılar: yumuşak mavi (neon değil)
-$recep-on-green: #05080D !default;
-$recep-red:      #FF1F4B !default;
-
+// Gece teması (isteğe bağlı; varsayılan açık). Yalnızca palet; kurallar theme.scss'ten gelir.
+$recep-ink:      #F5F5F7 !default;
+$recep-paper:    #000000 !default;
+$recep-muted:    #A1A1A6 !default;
+$recep-line:     rgba(245, 245, 247, .14) !default;
+$recep-surface:  #1C1C1E !default;
+$recep-green:    #3DD68C !default;   // vurgu: karbon yeşilinin gece tonu
+$recep-blue:     #64B5F6 !default;   // yalnızca küre ağı
+$recep-on-green: #000000 !default;
+$recep-red:      #FF375F !default;

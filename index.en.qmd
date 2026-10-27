@@ -43,11 +43,6 @@ repo-actions: false
 [/researchers]{.recep-index}
 
 ### [researchers](researchers/index.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
-
-- principal investigator
-- researchers
-- advisors
-- research fellows
 :::
 
 ::: {.recep-card}

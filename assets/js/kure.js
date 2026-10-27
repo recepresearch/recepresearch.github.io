@@ -27,6 +27,14 @@
 
   const NEON = { kara: "#39FF14", ag: "#00A3FF", nokta: "#FF1F4B", zemin: "#05080D" };
 
+  // #rrggbb → açık mı? (göreli parlaklık > .5)
+  function parlak(hex) {
+    const m = /^#?([0-9a-f]{6})$/i.exec((hex || "").trim());
+    if (!m) return false;
+    const n = parseInt(m[1], 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255 > 0.5;
+  }
+
   function cssRenkler() {
     const s = getComputedStyle(document.documentElement);
     const al = (ad, yedek) => (s.getPropertyValue(ad).trim() || yedek);
@@ -77,7 +85,7 @@
       ctx.clearRect(0, 0, boyut, boyut);
 
       // küre gövdesi
-      const acik = renk.zemin.toUpperCase() !== NEON.zemin;   // açık tema: kırık beyaz zemin
+      const acik = parlak(renk.zemin);                      // açık tema: zemin rengi açık
       const g = ctx.createRadialGradient(cx - R * 0.3, cy - R * 0.35, R * 0.1, cx, cy, R);
       g.addColorStop(0, acik ? "#EAF3FA" : "#0B2A44");
       g.addColorStop(1, acik ? "#CFE1EE" : "#040A12");

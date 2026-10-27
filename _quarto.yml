@@ -80,7 +80,7 @@ format:
             var m = document.querySelector('meta[name="quarto:offset"]');
             var s = document.createElement("script");
             // ?v= sürüm etiketi: kure.js her değiştiğinde artırın (tarayıcı önbelleği eski betiği tutmasın)
-            s.src = (m ? m.content : "./") + "assets/js/kure.js?v=7";
+            s.src = (m ? m.content : "./") + "assets/js/kure.js?v=8";
             s.defer = true;
             document.body.appendChild(s);
           })();
@@ -141,6 +141,6 @@ format:
     link-external-newwindow: true
     fig-responsive: true
     grid:
-      body-width: 860px
+      body-width: 780px          # v7: satır ~70 karakter
       sidebar-width: 250px
       margin-width: 230px
