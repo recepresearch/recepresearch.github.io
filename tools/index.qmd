@@ -13,9 +13,7 @@ toc: false
 
 ### [cbam cost calculator](cbam-calculator.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-::: {.recep-bekliyor}
-content in preparation.
-:::
+Gives an approximate CBAM cost for a good exported to the EU.
 :::
 
 ::: {.recep-card}

@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "stochastic-cbam-engine: A Stochastic Framework for Carbon Border Adjustment Mechanism Exposure Analysis"
+abstract: >-
+  An open-source, dependency-free R engine that quantifies exporters' exposure to
+  the EU Carbon Border Adjustment Mechanism (CBAM) as a probability distribution
+  rather than a single point estimate. Every reference value carries the document
+  and location it was taken from, and that provenance is printed alongside the
+  result, so a user can trace any figure back to the primary source. The free
+  allocation adjustment follows Implementing Regulation (EU) 2025/2620, using the
+  Commission's published CBAM benchmarks for 570 CN codes. Firm-level technology
+  heterogeneity is modelled as a lognormal deviation from sector-average emission
+  intensity, combined with correlated stochastic processes for the EU ETS carbon
+  price and the exchange rate, where exchange rate drift is derived from an
+  inflation differential rather than assumed. A companion record documents which
+  regulatory claims in the code have been checked against primary sources and which
+  remain open. Developed with a focus on Türkiye; the design covers iron and steel,
+  aluminium, cement, fertilisers and hydrogen. All computation runs locally: the
+  tool fetches no live data and transmits no user data.
+type: software
+authors:
+  - family-names: "İlhan"
+    given-names: "Selahattin"
+    orcid: "https://orcid.org/0009-0007-4824-752X"
+repository-code: "https://github.com/ilhanselahattin/stochastic-cbam-engine"
+license: AGPL-3.0-or-later
+version: 1.0.0
+date-released: "2026-08-26"
+doi: "10.5281/zenodo.22117000"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22117000"
+    description: "Bu sürümün (1.0.0) arşiv kaydı"
+  - type: doi
+    value: "10.5281/zenodo.22116999"
+    description: "Concept DOI - her zaman en son sürüme çözülür"
+keywords:
+  - CBAM
+  - carbon border adjustment mechanism
+  - carbon leakage
+  - emissions trading
+  - Monte Carlo simulation
+  - input-output analysis
+  - climate policy
+  - iron and steel
+  - Türkiye
+  - reproducible research

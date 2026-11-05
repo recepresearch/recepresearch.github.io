@@ -13,9 +13,7 @@ toc: false
 
 ### [skdm maliyet hesaplayıcısı](skdm-hesaplayici.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-::: {.recep-bekliyor}
-içerik hazırlanıyor.
-:::
+AB'ye ihraç edilen bir malın SKDM maliyetini yaklaşık olarak hesaplar.
 :::
 
 ::: {.recep-card}

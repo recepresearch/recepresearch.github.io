@@ -1,8 +1,16 @@
 ---
 title: "cbam cost calculator"
 order: 1
+html-math-method: plain   # no math: don't load KaTeX
 ---
 
-::: {.recep-bekliyor}
-content in preparation.
-:::
+A free tool that gives an approximate CBAM cost for a good exported to the EU. Developed by Selahattin İlhan.
+
+<!-- Calculator: assets/cbam/ (stochastic-cbam-engine, AGPL-3.0-or-later; see assets/cbam/KAYNAK.txt).
+     Loads nothing from outside; to update: python _araclar/cbam-guncelle.py -->
+```{=html}
+<div class="recep-cbam" data-cbam-hesaplayici lang="en"></div>
+<script type="module" src="../assets/cbam/hesaplayici.js"></script>
+```
+
+The tool gives an estimate and does not replace a declaration. Entering your own measured values and choosing a production route will be added later.

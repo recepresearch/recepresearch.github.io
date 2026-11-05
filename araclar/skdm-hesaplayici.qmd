@@ -1,8 +1,16 @@
 ---
 title: "skdm maliyet hesaplayıcısı"
 order: 1
+html-math-method: plain   # matematik yok: KaTeX yüklenmesin
 ---
 
-::: {.recep-bekliyor}
-içerik hazırlanıyor.
-:::
+AB'ye ihraç edilen bir malın SKDM maliyetini yaklaşık olarak hesaplayan ücretsiz bir araç. Selahattin İlhan tarafından geliştirilmiştir.
+
+<!-- Hesaplayıcı: assets/cbam/ (stochastic-cbam-engine, AGPL-3.0-or-later; bkz. assets/cbam/KAYNAK.txt).
+     Dışarıdan hiçbir şey yüklemez; güncellemek için: python _araclar/cbam-guncelle.py -->
+```{=html}
+<div class="recep-cbam" data-cbam-hesaplayici lang="tr"></div>
+<script type="module" src="../assets/cbam/hesaplayici.js"></script>
+```
+
+Araç tahmin verir, beyan yerine geçmez. Kendi ölçüm değerini girme ve üretim rotası seçme özellikleri ileride eklenecek.
