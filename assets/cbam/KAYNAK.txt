@@ -1,6 +1,6 @@
 SKDM (CBAM) maliyet hesaplayıcısı — stochastic-cbam-engine
 Copyright (C) 2026 Selahattin İlhan · AGPL-3.0-or-later (bkz. LICENSE, NOTICE)
 Kaynak kod: https://github.com/ilhanselahattin/stochastic-cbam-engine
-Commit: 6d4656d254ba8a4df0919e2bed12705d0013b50e
+Commit: 2208aabf223158260973991634ceb8a928cbe20d
 Kopyalandı: 2026-11-05 (_araclar/cbam-guncelle.py)
 Bu klasörü elle düzenlemeyin; değişiklikler aracın deposunda yapılır.
