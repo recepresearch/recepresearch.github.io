@@ -41,6 +41,7 @@ local CEVIRI = {
   ["araclar/index"] = "tools/index",
   ["araclar/skdm-hesaplayici"] = "tools/cbam-calculator",
   ["araclar/karbon-fiyati"] = "tools/carbon-price",
+  ["araclar/enerji-politikasi-izleyici"] = "tools/energy-policy-tracker",
   ["konferans-calistay/index"] = "conferences-workshops/index",
   ["iletisim/index"] = "contact/index",
 }

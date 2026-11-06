@@ -1,6 +1,6 @@
 ---
 title: "araçlar"
-description: "SKDM maliyet hesaplayıcısı, karbon fiyatı paneli."
+description: "SKDM maliyet hesaplayıcısı, karbon fiyatı paneli, TR-Energy Policy Tracker."
 hero-meta: '\> DIR_PACIOLI.exe // CALC_ENGINE_NODE'
 order: 0
 toc: false
@@ -20,6 +20,16 @@ AB'ye ihraç edilen bir malın SKDM maliyetini yaklaşık olarak hesaplar.
 [02]{.recep-index}
 
 ### [karbon fiyatı paneli](karbon-fiyati.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+::: {.recep-bekliyor}
+içerik hazırlanıyor.
+:::
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [TR-Energy Policy Tracker](enerji-politikasi-izleyici.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
 ::: {.recep-bekliyor}
 içerik hazırlanıyor.

@@ -1,6 +1,6 @@
 ---
 title: "tools"
-description: "CBAM cost calculator, carbon price dashboard."
+description: "CBAM cost calculator, carbon price dashboard, TR-Energy Policy Tracker."
 hero-meta: '\> DIR_PACIOLI.exe // CALC_ENGINE_NODE'
 order: 0
 toc: false
@@ -20,6 +20,16 @@ Gives an approximate CBAM cost for a good exported to the EU.
 [02]{.recep-index}
 
 ### [carbon price dashboard](carbon-price.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
+
+::: {.recep-bekliyor}
+content in preparation.
+:::
+:::
+
+::: {.recep-card}
+[03]{.recep-index}
+
+### [TR-Energy Policy Tracker](energy-policy-tracker.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
 ::: {.recep-bekliyor}
 content in preparation.
