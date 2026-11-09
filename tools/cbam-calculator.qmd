@@ -4,7 +4,7 @@ order: 1
 html-math-method: plain   # no math: don't load KaTeX
 ---
 
-A free tool that gives an approximate CBAM cost for a good exported to the EU. Developed by Selahattin İlhan.
+A free tool that gives an approximate CBAM cost for a good exported to the EU.
 
 <!-- Calculator: assets/cbam/ (stochastic-cbam-engine, AGPL-3.0-or-later; see assets/cbam/KAYNAK.txt).
      Loads nothing from outside; to update: python _araclar/cbam-guncelle.py -->

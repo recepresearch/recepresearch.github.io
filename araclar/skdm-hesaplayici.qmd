@@ -4,7 +4,7 @@ order: 1
 html-math-method: plain   # matematik yok: KaTeX yüklenmesin
 ---
 
-AB'ye ihraç edilen bir malın SKDM maliyetini yaklaşık olarak hesaplayan ücretsiz bir araç. Selahattin İlhan tarafından geliştirilmiştir.
+AB'ye ihraç edilen bir malın SKDM maliyetini yaklaşık olarak hesaplayan ücretsiz bir araç.
 
 <!-- Hesaplayıcı: assets/cbam/ (stochastic-cbam-engine, AGPL-3.0-or-later; bkz. assets/cbam/KAYNAK.txt).
      Dışarıdan hiçbir şey yüklemez; güncellemek için: python _araclar/cbam-guncelle.py -->
