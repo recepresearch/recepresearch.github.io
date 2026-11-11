@@ -1,0 +1,49 @@
+```{=html}
+<%
+// Ana sayfa sözlüğü: data/sozluk.yml → açılan kavram kartları.
+// JS olmadan da çalışır (<details>); arama, konu çipleri ve "rastgele" düğmesi assets/js/anasayfa.js ile gelir.
+// template-params: dil (tr | en)
+const p = (typeof templateParams !== "undefined" && templateParams) || {};
+const en = p.dil === "en";
+const KONU = en
+  ? { skdm: "CBAM", piyasa: "Carbon markets", emisyon: "Emissions", enerji: "Energy" }
+  : { skdm: "SKDM", piyasa: "Karbon piyasası", emisyon: "Emisyon", enerji: "Enerji" };
+const T = en
+  ? { ara: "Search the glossary", hepsi: "All", rastgele: "Random term", neden: "Why it matters", ilgili: "Related page", yok: "No term matches your search.", konular: "Topics" }
+  : { ara: "Sözlükte ara", hepsi: "Tümü", rastgele: "Rastgele kavram", neden: "Neden önemli?", ilgili: "İlgili sayfa", yok: "Aramanıza uyan kavram yok.", konular: "Konular" };
+const al = (k, ad) => (en && k[ad + "_en"]) || k[ad];
+const kucuk = (s) => (s || "").toLocaleLowerCase(en ? "en" : "tr");
+const kullanilan = Object.keys(KONU).filter((k) => items.some((i) => i.konu === k));
+%>
+<div class="recep-sozluk" data-sozluk>
+<div class="recep-sozluk-arac" hidden>
+<label class="recep-sozluk-ara">
+<span class="visually-hidden"><%= T.ara %></span>
+<svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+<input type="search" placeholder="<%= T.ara %>" autocomplete="off" spellcheck="false" data-sozluk-ara>
+</label>
+<div class="recep-sozluk-cipler" role="group" aria-label="<%= T.konular %>">
+<button type="button" class="recep-cip" aria-pressed="true" data-konu=""><%= T.hepsi %></button>
+<% for (const k of kullanilan) { %><button type="button" class="recep-cip" aria-pressed="false" data-konu="<%- k %>"><%= KONU[k] %></button>
+<% } %>
+</div>
+<button type="button" class="recep-sozluk-rastgele" data-sozluk-rastgele>
+<svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16"><path d="M3 6h3.5c2 0 3 1 4 3l1 2c1 2 2 3 4 3H17M3 14h3.5c1.3 0 2.2-.4 2.9-1.2M11.6 7.2c.7-.8 1.6-1.2 2.9-1.2H17m-2-2 2 2-2 2m0 4 2 2-2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<%= T.rastgele %></button>
+</div>
+<p class="recep-sozluk-sayi visually-hidden" role="status" aria-live="polite" data-sozluk-sayi></p>
+<div class="recep-sozluk-izgara">
+<% for (const k of items) { const ad = al(k, "terim"); const bag = al(k, "bag"); %>
+<details class="recep-kavram" name="sozluk" data-konu="<%- k.konu %>" data-ara="<%= kucuk([ad, k.terim, k.terim_en, al(k, "tanim")].join(" ")) %>">
+<summary><span class="recep-kavram-ad"><%= ad %></span><span class="recep-kavram-konu"><%= KONU[k.konu] || "" %></span><span class="recep-kavram-isaret" aria-hidden="true"></span></summary>
+<div class="recep-kavram-govde">
+<p><%= al(k, "tanim") %></p>
+<% if (al(k, "neden")) { %><p class="recep-kavram-neden"><strong><%= T.neden %></strong> <%= al(k, "neden") %></p><% } %>
+<% if (bag) { %><a class="recep-kavram-bag" href="<%- bag %>"><%= T.ilgili %> <span aria-hidden="true">→</span></a><% } %>
+</div>
+</details>
+<% } %>
+</div>
+<p class="recep-sozluk-yok" hidden data-sozluk-yok><%= T.yok %></p>
+</div>
+```

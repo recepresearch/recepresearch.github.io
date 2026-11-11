@@ -1,0 +1,18 @@
+```{=html}
+<%
+// Ana sayfa "çalışma alanları": proje sayfalarının başlığı ve açıklaması (sayfaların kendi ön bilgisinden).
+// template-params: dil (tr | en)
+const p = (typeof templateParams !== "undefined" && templateParams) || {};
+const git = p.dil === "en" ? "View project" : "Projeye git";
+%>
+<div class="recep-calisma">
+<% for (const [i, k] of items.entries()) { %>
+<a class="recep-calisma-kart" href="<%- k.path %>">
+<span class="recep-calisma-no" aria-hidden="true"><%= String(i + 1).padStart(2, "0") %></span>
+<span class="recep-calisma-baslik"><%= k.title %></span>
+<% if (k.description) { %><span class="recep-calisma-aciklama"><%= k.description %></span><% } %>
+<span class="recep-calisma-git"><%= git %> <span aria-hidden="true">→</span></span>
+</a>
+<% } %>
+</div>
+```

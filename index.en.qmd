@@ -13,13 +13,24 @@ html-math-method: plain   # no math: don't load KaTeX
 # Sections are reached from the menu; the old buttons and 8-card "sections" grid were removed.
 # The block hides itself while there are no English entries.
 listing:
-  id: son-kayitlar
-  contents: conferences-workshops/posts
-  type: grid
-  grid-columns: 3
-  sort: "date desc"
-  max-items: 3
-  fields: [image, date, title, description]
+  - id: son-kayitlar
+    contents: conferences-workshops/posts
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    max-items: 3
+    fields: [image, date, title, description]
+  - id: calisma
+    contents: [projects/cbam/index.qmd, projects/adep.qmd, projects/cetp-intact.qmd]
+    sort: "order"
+    template: _templates/calisma.ejs
+    template-params:
+      dil: en
+  - id: sozluk
+    contents: data/sozluk.yml
+    template: _templates/sozluk.ejs
+    template-params:
+      dil: en
 date-format: "D MMMM YYYY"
 ---
 
@@ -31,3 +42,46 @@ date-format: "D MMMM YYYY"
 ::: {#son-kayitlar}
 :::
 :::
+
+::: {.recep-bolum}
+## what we work on {.no-prefix .unnumbered}
+
+::: {#calisma}
+:::
+:::
+
+::: {.recep-bolum}
+## cbam year by year {.no-prefix .unnumbered}
+
+The EU is cutting the free emission allowances it gives its own producers from 2026 to 2034. As the free share shrinks, the share importers pay grows. Move the year to see the difference.
+
+```{=html}
+<div class="recep-skdm-yil" data-skdm-yil>
+<div class="recep-skdm-ust">
+<output class="recep-skdm-yilsayi" data-yil>2026</output>
+<div class="recep-skdm-oran"><span data-odenen>2.5%</span><small>share of benchmark-level emissions paid</small></div>
+</div>
+<div class="recep-skdm-cubuk" aria-hidden="true"><span class="ucretsiz" data-ucretsiz-cubuk style="width:97.5%"></span><span class="odenen" data-odenen-cubuk style="width:2.5%"></span></div>
+<div class="recep-skdm-lejant" aria-hidden="true"><span class="ucretsiz">deducted as free allocation</span><span class="odenen">paid with certificates</span></div>
+<label class="visually-hidden" for="skdm-yil-girdi">Year</label>
+<input id="skdm-yil-girdi" class="recep-skdm-kaydirici" type="range" min="2026" max="2034" step="1" value="2026" data-girdi>
+<div class="recep-skdm-yillar" aria-hidden="true"><span>2026</span><span>2030</span><span>2034</span></div>
+<p class="recep-skdm-metin" data-metin>In 2026, certificates cover 2.5% of benchmark-level emissions and all emissions above the benchmark.</p>
+<div class="recep-skdm-alt">
+<button type="button" class="recep-skdm-oynat" data-oynat hidden>▶ Play the years</button>
+<a class="recep-btn birincil" href="tools/cbam-calculator.html">Calculate for your product →</a>
+</div>
+</div>
+```
+:::
+
+::: {.recep-bolum}
+## glossary {.no-prefix .unnumbered}
+
+The terms that come up most in policy texts, in short and plain words.
+
+::: {#sozluk}
+:::
+:::
+
+<script type="module" src="../assets/js/anasayfa.js"></script>

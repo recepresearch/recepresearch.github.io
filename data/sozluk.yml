@@ -1,0 +1,123 @@
+# Ana sayfa sözlüğü (kavram kartları). TASLAK — kullanıcı onayı bekliyor.
+# Alanlar: terim / terim_en · konu (skdm | piyasa | emisyon | enerji)
+#          tanim / tanim_en (1–2 cümle) · neden / neden_en ("neden önemli?", 1 cümle)
+#          bag / bag_en (isteğe bağlı: site köküne göre ilgili sayfa, .html ile)
+- terim: SKDM
+  terim_en: CBAM
+  konu: skdm
+  tanim: Sınırda Karbon Düzenleme Mekanizması. AB'ye ithal edilen çelik, alüminyum, çimento, gübre, hidrojen ve elektrik gibi mallar için, üretimleri sırasında salınan karbonun bedelini ithalatçıya ödetir.
+  tanim_en: Carbon Border Adjustment Mechanism. It makes importers pay for the carbon emitted while producing goods such as steel, aluminium, cement, fertilisers, hydrogen and electricity brought into the EU.
+  neden: AB, Türkiye'nin en büyük ihracat pazarı; SKDM kapsamındaki sektörlerde maliyet doğrudan ihracatçının rekabet gücüne yansır.
+  neden_en: The EU is Türkiye's largest export market; in CBAM sectors the cost feeds directly into exporters' competitiveness.
+  bag: araclar/skdm-hesaplayici.html
+  bag_en: tools/cbam-calculator.html
+
+- terim: Gömülü emisyon
+  terim_en: Embedded emissions
+  konu: skdm
+  tanim: Bir malın üretimi boyunca salınan sera gazlarının ton ürün başına toplamı. SKDM bu değer üzerinden hesaplanır.
+  tanim_en: The greenhouse gases released while producing a good, per tonne of product. CBAM is calculated on this value.
+  neden: Aynı ürünü daha temiz üreten firma, daha az SKDM sertifikası öder.
+  neden_en: A firm that makes the same product more cleanly surrenders fewer CBAM certificates.
+
+- terim: Varsayılan değer
+  terim_en: Default value
+  konu: skdm
+  tanim: Gerçek ölçüm sunulamadığında AB'nin ülke ve ürün bazında yayımladığı hazır emisyon değeri. Belirli bir pay eklenerek kasıtlı olarak yüksek tutulur.
+  tanim_en: A ready-made emission value published by the EU per country and product, used when no measured value is available. A mark-up keeps it deliberately high.
+  neden: Kendi emisyonunu ölçüp doğrulatan ihracatçı çoğu zaman daha düşük maliyetle karşılaşır.
+  neden_en: Exporters that measure and verify their own emissions usually face a lower cost.
+  bag: araclar/skdm-hesaplayici.html
+  bag_en: tools/cbam-calculator.html
+
+- terim: Benchmark (ölçüt değer)
+  terim_en: Benchmark
+  konu: skdm
+  tanim: Bir sektörün en verimli tesislerinin ton ürün başına salımı. AB'de ücretsiz tahsis bu değere göre verilir; SKDM'de de aynı miktar düşülür.
+  tanim_en: The emissions per tonne of the most efficient plants in a sector. EU free allocation is based on it, and CBAM deducts the same amount.
+  neden: İthal mala AB üreticisinden daha ağır davranılmasını önler; ücretsiz tahsis azaldıkça indirim de küçülür.
+  neden_en: It keeps imports from being treated more harshly than EU producers; the deduction shrinks as free allocation is phased out.
+  bag: araclar/skdm-hesaplayici.html
+  bag_en: tools/cbam-calculator.html
+
+- terim: SKDM sertifikası
+  terim_en: CBAM certificate
+  konu: skdm
+  tanim: Bir ton CO₂ eşdeğeri salımı karşılayan belge. İthalatçı, ithal ettiği mallardaki gömülü emisyon kadar sertifikayı her yıl teslim eder.
+  tanim_en: A certificate covering one tonne of CO₂-equivalent. Each year the importer surrenders as many certificates as the embedded emissions in its imports.
+  neden: Sertifika fiyatı AB ETS fiyatını izler; bu yüzden karbon fiyatındaki dalgalanma doğrudan ihracat maliyetine geçer.
+  neden_en: Its price follows the EU ETS price, so carbon price swings pass straight into export costs.
+
+- terim: De minimis eşiği
+  terim_en: De minimis threshold
+  konu: skdm
+  tanim: Bir ithalatçının yılda toplam 50 tonun altında kalan SKDM kapsamlı ithalatı yükümlülükten muaftır.
+  tanim_en: An importer whose CBAM-covered imports stay below 50 tonnes in total per year is exempt from the obligation.
+  neden: Küçük gönderiler için idari yükü kaldırır; büyük ihracatçıların çoğu ise kapsamda kalır.
+  neden_en: It removes the paperwork for small consignments, while most large exporters stay in scope.
+
+- terim: AB ETS
+  terim_en: EU ETS
+  konu: piyasa
+  tanim: AB Emisyon Ticaret Sistemi. Kapsamdaki tesislerin toplam salımına bir tavan koyar; tesisler salım izinlerini piyasada alıp satar.
+  tanim_en: The EU Emissions Trading System. It caps the total emissions of covered installations, which buy and sell allowances on a market.
+  neden: Avrupa'daki karbon fiyatını belirler ve SKDM sertifika fiyatının dayanağıdır.
+  neden_en: It sets the carbon price in Europe and is the basis of the CBAM certificate price.
+
+- terim: Ücretsiz tahsis
+  terim_en: Free allocation
+  konu: piyasa
+  tanim: AB ETS'de bazı sektörlere salım izinlerinin bir kısmının bedelsiz verilmesi. SKDM'nin kapsadığı sektörlerde 2026'dan 2034'e kadar aşamalı olarak kaldırılıyor.
+  tanim_en: Giving some sectors part of their EU ETS allowances for free. In CBAM sectors it is phased out step by step from 2026 to 2034.
+  neden: Ücretsiz tahsis azaldıkça SKDM'nin ithalatçıya yükü artar.
+  neden_en: As free allocation falls, the CBAM burden on importers rises.
+
+- terim: Karbon fiyatı
+  terim_en: Carbon price
+  konu: piyasa
+  tanim: Bir ton CO₂ salımının bedeli. Emisyon ticaret sistemleriyle piyasada oluşabilir ya da karbon vergisiyle devletçe belirlenebilir.
+  tanim_en: The cost of emitting one tonne of CO₂. It can be set by a market through emissions trading or by the state through a carbon tax.
+  neden: Kirletmenin maliyetini üreticinin kararlarına katar ve temiz teknolojiyi kârlı hale getirir.
+  neden_en: It brings the cost of pollution into producers' decisions and makes clean technology pay off.
+
+- terim: Karbon kaçağı
+  terim_en: Carbon leakage
+  konu: piyasa
+  tanim: Sıkı iklim politikası olan ülkelerdeki üretimin, daha gevşek kuralları olan ülkelere kayması.
+  tanim_en: Production moving from countries with strict climate policy to countries with looser rules.
+  neden: Küresel salımı azaltmaz, yalnızca yerini değiştirir; SKDM bunu önlemek için tasarlandı.
+  neden_en: It does not cut global emissions, only moves them; CBAM was designed to prevent it.
+
+- terim: CO₂ eşdeğeri
+  terim_en: CO₂ equivalent
+  konu: emisyon
+  tanim: Farklı sera gazlarını, ısınmaya etkilerine göre tek bir birimde, ton CO₂ cinsinden toplamanın ölçüsü.
+  tanim_en: A measure that adds up different greenhouse gases in a single unit, tonnes of CO₂, according to their warming effect.
+  neden: Metan veya azot oksit gibi gazların etkisinin karşılaştırılabilmesini ve fiyatlanabilmesini sağlar.
+  neden_en: It makes the effect of gases such as methane or nitrous oxide comparable and priceable.
+
+- terim: Doğrudan ve dolaylı emisyon
+  terim_en: Direct and indirect emissions
+  konu: emisyon
+  tanim: Doğrudan emisyon tesisin kendi bacasından çıkar; dolaylı emisyon ise tesisin kullandığı elektriğin üretiminden kaynaklanır.
+  tanim_en: Direct emissions leave the plant's own stack; indirect emissions come from producing the electricity the plant uses.
+  neden: SKDM bazı sektörlerde yalnızca doğrudan, bazılarında her ikisini birden sayar.
+  neden_en: CBAM counts only direct emissions in some sectors and both in others.
+
+- terim: Karbon yakalama ve depolama
+  terim_en: Carbon capture and storage
+  konu: enerji
+  tanim: Tesislerden çıkan CO₂'nin yakalanıp taşınması ve yer altında kalıcı olarak depolanması.
+  tanim_en: Capturing CO₂ from installations, transporting it and storing it permanently underground.
+  neden: Çimento gibi salımı tamamen önlenemeyen sektörler için önemli bir azaltım yolu.
+  neden_en: An important abatement route for sectors such as cement whose emissions cannot be fully avoided.
+  bag: projeler/cetp-intact.html
+  bag_en: projects/cetp-intact.html
+
+- terim: Enerji dönüşümü
+  terim_en: Energy transition
+  konu: enerji
+  tanim: Fosil yakıtlara dayalı enerji sisteminden yenilenebilir ve düşük karbonlu kaynaklara geçiş süreci.
+  tanim_en: The shift from an energy system based on fossil fuels to renewable and low-carbon sources.
+  neden: Elektriğin karbon yoğunluğu düştükçe sanayinin dolaylı emisyonu ve SKDM maliyeti de düşer.
+  neden_en: As electricity gets cleaner, industry's indirect emissions and CBAM costs fall too.

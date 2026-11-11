@@ -11,13 +11,24 @@ html-math-method: plain   # matematik yok: KaTeX yüklenmesin
 # Ana sayfa (v7): küre + grup adı; altında panelden girilen en son 3 kayıt (konferans, çalıştay, duyuru).
 # Bölümlere menüden gidilir; eski düğmeler ve 8 kartlık "bölümler" ızgarası kaldırıldı.
 listing:
-  id: son-kayitlar
-  contents: konferans-calistay/posts
-  type: grid
-  grid-columns: 3
-  sort: "date desc"
-  max-items: 3
-  fields: [image, date, title, description]
+  - id: son-kayitlar
+    contents: konferans-calistay/posts
+    type: grid
+    grid-columns: 3
+    sort: "date desc"
+    max-items: 3
+    fields: [image, date, title, description]
+  - id: calisma
+    contents: [projeler/skdm/index.qmd, projeler/adep.qmd, projeler/cetp-intact.qmd]
+    sort: "order"
+    template: _templates/calisma.ejs
+    template-params:
+      dil: tr
+  - id: sozluk
+    contents: data/sozluk.yml
+    template: _templates/sozluk.ejs
+    template-params:
+      dil: tr
 date-format: "D MMMM YYYY"
 ---
 
@@ -29,3 +40,46 @@ date-format: "D MMMM YYYY"
 ::: {#son-kayitlar}
 :::
 :::
+
+::: {.recep-bolum}
+## neler üzerinde çalışıyoruz {.no-prefix .unnumbered}
+
+::: {#calisma}
+:::
+:::
+
+::: {.recep-bolum}
+## skdm yükü yıl yıl {.no-prefix .unnumbered}
+
+AB, kendi üreticilerine verdiği ücretsiz salım izinlerini 2026'dan 2034'e kadar azaltıyor. Ücretsiz pay küçüldükçe ithalatçının ödediği pay büyüyor. Yılı değiştirip farkı görün.
+
+```{=html}
+<div class="recep-skdm-yil" data-skdm-yil>
+<div class="recep-skdm-ust">
+<output class="recep-skdm-yilsayi" data-yil>2026</output>
+<div class="recep-skdm-oran"><span data-odenen>%2,5</span><small>benchmark düzeyindeki salımın ödenen payı</small></div>
+</div>
+<div class="recep-skdm-cubuk" aria-hidden="true"><span class="ucretsiz" data-ucretsiz-cubuk style="width:97.5%"></span><span class="odenen" data-odenen-cubuk style="width:2.5%"></span></div>
+<div class="recep-skdm-lejant" aria-hidden="true"><span class="ucretsiz">ücretsiz tahsis kadar düşülür</span><span class="odenen">sertifikayla ödenir</span></div>
+<label class="visually-hidden" for="skdm-yil-girdi">Yıl</label>
+<input id="skdm-yil-girdi" class="recep-skdm-kaydirici" type="range" min="2026" max="2034" step="1" value="2026" data-girdi>
+<div class="recep-skdm-yillar" aria-hidden="true"><span>2026</span><span>2030</span><span>2034</span></div>
+<p class="recep-skdm-metin" data-metin>2026'da benchmark düzeyindeki salımın %2,5'i için, benchmarkı aşan salımın ise tamamı için sertifika alınır.</p>
+<div class="recep-skdm-alt">
+<button type="button" class="recep-skdm-oynat" data-oynat hidden>▶ Yılları oynat</button>
+<a class="recep-btn birincil" href="araclar/skdm-hesaplayici.html">Kendi ürününü hesapla →</a>
+</div>
+</div>
+```
+:::
+
+::: {.recep-bolum}
+## sözlük {.no-prefix .unnumbered}
+
+Politika metinlerinde en sık geçen kavramlar, kısaca ve gündelik dille.
+
+::: {#sozluk}
+:::
+:::
+
+<script type="module" src="assets/js/anasayfa.js"></script>
