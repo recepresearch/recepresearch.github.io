@@ -1,8 +1,37 @@
 ---
 title: "TR-Energy Policy Tracker"
+description: "Türkiye'nin karbon yoğun altyapısını tesis düzeyinde haritalayan açık kaynaklı atlas. Geliştirilmeye devam ediyor."
 order: 3
+html-math-method: plain   # matematik yok: KaTeX yüklenmesin
 ---
 
-::: {.recep-bekliyor}
-içerik hazırlanıyor.
-:::
+<!-- Kaynak: github.com/ilhanselahattin/TR-Energy-Policy-Tracker (MIT, Selahattin İlhan), README "Türkçe özet" ve "Scope".
+     Uygulama R Shiny: statik sitede çalışmaz; yayına alındığında aşağıdaki not yerine <iframe> ile gömülecek (README "Embedding"). -->
+
+[geliştirilmeye devam ediyor]{.recep-tag .recep-tag--yakinda}
+
+Türkiye'nin karbon yoğun altyapısını **tesis düzeyinde** haritalayan açık kaynaklı bir atlas. İki ayrı grubu ve aralarındaki bağı bir arada gösterir:
+
+- **88 sanayi tesisi:** demir-çelik, çimento ve alüminyum (SKDM sektörleri)
+- **212 enerji varlığı:** 157 elektrik santrali, 38 kömür ocağı, 17 petrol-gaz tesisi
+
+Aralarındaki bağ şudur: sanayi tesislerinin dolaylı emisyonu, kullandıkları elektriğin karbon yoğunluğuna bağlıdır. O yoğunluğu da haritadaki santral filosu üretir.
+
+## bugün neler çalışıyor {.no-prefix}
+
+- Tesis kütüğü: il ve İBBS-2 bölgesi atamasıyla 300 kayıt
+- 2021–2026 tesis × yıl emisyon paneli
+- Zaman kaydırıcılı harita; tahmin yılları kesik çizgiyle ayrı gösterilir
+- 2000–2026 santral filosu gelişimi, kendi kaydırıcısıyla
+- Şebeke karbon yoğunluğunun üç bağımsız tahmini
+
+## geliştirilecekler {.no-prefix}
+
+- **SKDM maruziyet hesabı.** Gerekli mevzuat parametreleri hazır ve kaynaklı; hesap, dayandığı modelleme kararları verildiğinde eklenecek.
+- **Etkileşimli harita bu sayfada.** Uygulama yayına alındığında doğrudan buraya yerleştirilecek.
+
+Araç bir vergi hesaplayıcısı değildir: SKDM sertifikasını AB'deki ithalatçı alır. Hesap eklendiğinde üreteceği rakam, tesisin AB'ye giden üretimindeki emisyonun yarattığı maliyet baskısı olacaktır.
+
+## kaynak kod ve veri {.no-prefix}
+
+Kaynak kod [GitHub'da](https://github.com/ilhanselahattin/TR-Energy-Policy-Tracker) (MIT lisansı). Veriler: Climate TRACE, Global Energy Monitor, Ember (CC BY 4.0) ve Natural Earth.

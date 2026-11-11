@@ -31,9 +31,9 @@ içerik hazırlanıyor.
 
 ### [TR-Energy Policy Tracker](enerji-politikasi-izleyici.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-::: {.recep-bekliyor}
-içerik hazırlanıyor.
-:::
+Türkiye'nin karbon yoğun tesislerini tesis düzeyinde haritalayan atlas.
+
+[geliştirilmeye devam ediyor]{.recep-tag .recep-tag--yakinda}
 :::
 
 ::::

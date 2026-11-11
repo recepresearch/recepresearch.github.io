@@ -31,9 +31,9 @@ content in preparation.
 
 ### [TR-Energy Policy Tracker](energy-policy-tracker.qmd){.stretched-link} {.unnumbered .unlisted .no-anchor}
 
-::: {.recep-bekliyor}
-content in preparation.
-:::
+An atlas mapping Türkiye's carbon-intensive plants facility by facility.
+
+[under active development]{.recep-tag .recep-tag--yakinda}
 :::
 
 ::::

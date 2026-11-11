@@ -1,8 +1,37 @@
 ---
 title: "TR-Energy Policy Tracker"
+description: "An open-source atlas mapping Türkiye's carbon-intensive infrastructure facility by facility. Under active development."
 order: 3
+html-math-method: plain   # no math: don't load KaTeX
 ---
 
-::: {.recep-bekliyor}
-content in preparation.
-:::
+<!-- Source: github.com/ilhanselahattin/TR-Energy-Policy-Tracker (MIT, Selahattin İlhan), README.
+     The app is R Shiny: it cannot run on a static site; once hosted it will be embedded here with an <iframe> (README "Embedding"). -->
+
+[under active development]{.recep-tag .recep-tag--yakinda}
+
+An open-source atlas that maps Türkiye's carbon-intensive infrastructure **facility by facility**. It brings two separate populations, and the link between them, together:
+
+- **88 industrial plants:** iron and steel, cement and aluminium (the CBAM sectors)
+- **212 energy assets:** 157 power plants, 38 coal mines, 17 oil and gas facilities
+
+The link: the indirect emissions of industrial plants depend on the carbon intensity of the electricity they use, and that intensity is produced by the power fleet on the map.
+
+## what works today {.no-prefix}
+
+- A register of 300 facilities, assigned to provinces and NUTS-2 regions
+- A 2021–2026 facility × year emissions panel
+- A map driven by a time slider; estimated years are drawn dashed
+- The 2000–2026 development of the power fleet, with its own slider
+- Three independent estimates of grid carbon intensity
+
+## coming next {.no-prefix}
+
+- **CBAM exposure calculation.** The regulatory parameters are in place and cited; the calculation will be added once the modelling decisions it rests on are made.
+- **The interactive map on this page.** Once the app is hosted, it will be embedded here directly.
+
+The tool is not a tax calculator: CBAM certificates are bought by the importer in the EU. When the calculation is added, its figure will be the cost pressure created by the emissions embedded in a plant's EU-bound output.
+
+## source code and data {.no-prefix}
+
+Source code is [on GitHub](https://github.com/ilhanselahattin/TR-Energy-Policy-Tracker) (MIT licence). Data: Climate TRACE, Global Energy Monitor, Ember (CC BY 4.0) and Natural Earth.
